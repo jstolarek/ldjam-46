@@ -7,3 +7,5 @@ Ludum Dare 46
   * Budowanie wersji JavaScript (przeglądarka): `haxe js.hxml`
   * Uruchamianie wersji standalone (Windows/Linux): `hl bin/client.hl`
   * Uruchamianie wersji przeglądarkowej: otworzyć `js.html` w przeglądarce
+
+[Instrukcja publikcji na itch.io](https://itch.io/docs/creators/getting-started)
