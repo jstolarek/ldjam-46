@@ -27,7 +27,7 @@ class Game extends Process {
         fx = new Fx();
         hud = new ui.Hud();
         // JSTOLAREK: ODKOMENTOWAĆ W FINALNEJ WERSJI
-        Assets.sfx.music().play(true, 0.5);
+        // Assets.sfx.music().play(true, 0.5);
 
         // JSTOLAREK: wczytywać pozycję bohatera na podstawie pliku ogmo?
         new en.Hero(0,0);
