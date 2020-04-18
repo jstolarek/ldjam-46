@@ -51,14 +51,15 @@ class Main extends dn.Process {
 
         // Game controller
         controller = new dn.heaps.Controller(s);
-        ca = controller.createAccess("main");
-        controller.bind(AXIS_LEFT_X_NEG, Key.LEFT, Key.Q, Key.A);
-        controller.bind(AXIS_LEFT_X_POS, Key.RIGHT, Key.D);
-        controller.bind(X, Key.SPACE, Key.F, Key.E);
-        controller.bind(A, Key.UP, Key.Z, Key.W);
-        controller.bind(B, Key.ENTER, Key.NUMPAD_ENTER);
+        controller.bind(DPAD_LEFT, Key.LEFT, Key.A);
+        controller.bind(DPAD_RIGHT, Key.RIGHT, Key.D);
+        controller.bind(DPAD_UP, Key.UP, Key.W);
+        controller.bind(DPAD_DOWN, Key.DOWN, Key.S);
+        controller.bind(A, Key.Z);
+        controller.bind(B, Key.X);
         controller.bind(SELECT, Key.R);
         controller.bind(START, Key.N);
+        ca = controller.createAccess("main");
 
         // Start
         new dn.heaps.GameFocusHelper(Boot.ME.s2d, Assets.fontMedium);
