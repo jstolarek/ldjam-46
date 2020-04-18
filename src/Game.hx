@@ -26,7 +26,7 @@ class Game extends Process {
         level = new Level();
         fx = new Fx();
         hud = new ui.Hud();
-        Assets.sfx.theme().play(true, 0.5);
+        Assets.sfx.music().play(true, 0.5);
         trace(Lang.t._("Game is ready."));
     }
 
@@ -45,7 +45,7 @@ class Game extends Process {
 
     override function onDispose() {
         super.onDispose();
-        Assets.sfx.theme().stop();
+        Assets.sfx.music().stop();
 
         fx.destroy();
         for(e in Entity.ALL)

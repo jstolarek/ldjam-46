@@ -8,7 +8,6 @@ class Assets {
     public static var fontMedium : h2d.Font;
     public static var fontLarge : h2d.Font;
     public static var tiles : SpriteLib;
-    public static var music : dn.heaps.Sfx;
 
     static var initDone = false;
     public static function init() {
