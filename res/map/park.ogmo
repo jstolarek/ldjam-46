@@ -1,0 +1,134 @@
+{
+  "name": "ogmo",
+  "ogmoVersion": "3.3.0",
+  "levelPaths": ["."],
+  "backgroundColor": "#282c34ff",
+  "gridColor": "#3c4049cc",
+  "anglesRadians": true,
+  "directoryDepth": 1,
+  "layerGridDefaultSize": {"x": 16, "y": 16},
+  "levelDefaultSize": {"x": 320, "y": 240},
+  "levelMinSize": {"x": 512, "y": 288},
+  "levelMaxSize": {"x": 512, "y": 288},
+  "levelValues": [],
+  "defaultExportMode": ".json",
+  "compactExport": false,
+  "externalScript": "",
+  "playCommand": "",
+  "entityTags": [],
+  "layers": [
+    {
+      "definition": "entity",
+      "name": "entities",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "22302234",
+      "requiredTags": [],
+      "excludedTags": []
+    },
+    {
+      "definition": "grid",
+      "name": "collisions",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "22294454",
+      "arrayMode": 0,
+      "legend": {"0": "#00000000", "1": "#000000ad"}
+    },
+    {
+      "definition": "tile",
+      "name": "fg",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "22297201",
+      "exportMode": 0,
+      "arrayMode": 0,
+      "defaultTileset": "bg"
+    },
+    {
+      "definition": "tile",
+      "name": "bg",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "22256852",
+      "exportMode": 0,
+      "arrayMode": 1,
+      "defaultTileset": "bg"
+    }
+  ],
+  "entities": [
+    {
+      "exportID": "22305734",
+      "name": "hero",
+      "limit": 1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#00ff32ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": [],
+      "values": []
+    },
+    {
+      "exportID": "22311485",
+      "name": "camFocus",
+      "limit": 1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#00baffff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": [],
+      "values": [
+        {"name": "id", "definition": "String", "defaults": "", "maxLength": 0, "trimWhitespace": true}
+      ]
+    }
+  ],
+  "tilesets": [
+    {"label": "bg", "path": "grass.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAIAAAD4YuoOAAAAAXNSR0IArs4c6QAAAHhJREFUOI1jzNpnwEAKMHzfTpJ6Jgj1cPV/krSRbIF8KCOyKKZ9ZLuACasRaPZhFSHZAkwjqBJuTHjkyHY1AQuoGAHYLaBiBKBbgOZS6scBmkupGQf0zmhYrSTPETiTKbWiGntORgPUSaZ4iiOqJVNkQJUkxMDAAADhvzAf+MqA9wAAAABJRU5ErkJggg==", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0}
+  ]
+}
