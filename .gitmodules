@@ -7,3 +7,6 @@
 [submodule "castle"]
 	path = castle
 	url = git@github.com:ncannasse/castle.git
+[submodule "heapsOgmo"]
+	path = heapsOgmo
+	url = git@github.com:deepnight/heapsOgmo.git

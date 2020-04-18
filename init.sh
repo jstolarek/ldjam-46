@@ -7,5 +7,6 @@ haxelib newrepo
 haxelib git heaps heaps/
 haxelib git deepnightLibs deepnightLibs/
 haxelib git castle castle/
+haxelib git heapsOgmo heapsOgmo/
 
 haxelib install hlsdl
