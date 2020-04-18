@@ -13,8 +13,8 @@ class Lang {
         _initDone = true;
         CUR = lid==null ? DEFAULT : lid;
 
-		t = new GetText();
-		t.readMo( hxd.Res.load("lang/"+CUR+".mo").entry.getBytes() );
+        t = new GetText();
+        t.readMo( hxd.Res.load("lang/"+CUR+".mo").entry.getBytes() );
     }
 
     public static function untranslated(str:Dynamic) : LocaleString {
