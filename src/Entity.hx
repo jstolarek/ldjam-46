@@ -3,6 +3,7 @@ class Entity {
     public static var GC : Array<Entity> = [];
 
     public var game(get,never) : Game; inline function get_game() return Game.ME;
+    public var hero(get,never) : en.Hero; inline function get_hero() return Game.ME.hero;
     public var level(get,never) : Level; inline function get_level() return Game.ME.level;
     public var destroyed(default,null) = false;
     public var ftime(get,never) : Float; inline function get_ftime() return game.ftime;
@@ -205,6 +206,16 @@ class Entity {
     }
 
 
+    function hasCircColl() {
+        return !destroyed;
+    }
+
+    function hasCircCollWith(e:Entity) {
+        return true;
+    }
+
+    function onTouch(e:Entity) { }
+
     public function preUpdate() {
         cd.update(tmod);
         updateActions();
@@ -226,6 +237,17 @@ class Entity {
     public function fixedUpdate() {} // runs at a "guaranteed" 30 fps
 
     public function update() { // runs at an unknown fps
+        // Circular collisions
+        if( hasCircColl() )
+            for(e in ALL)
+                if( e!=this && e.hasCircColl() && hasCircCollWith(e) && e.hasCircCollWith(this) ) {
+                    var d = distPx(e);
+                    if( d<=radius+e.radius ) {
+                        onTouch(e);
+                        e.onTouch(this);
+                    }
+                }
+
         // X
         var steps = M.ceil( M.fabs(dxTotal*tmod) );
         var step = dxTotal*tmod / steps;

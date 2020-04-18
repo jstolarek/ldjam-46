@@ -51,6 +51,10 @@ class Hero extends Entity {
     return state == WALK;
   }
 
+  public function hit(dmg:Int) {
+      health -= dmg;
+  }
+
   override function dispose() { // call on garbage collection
     super.dispose();
     ca.dispose(); // release on destruction
@@ -172,4 +176,10 @@ class Hero extends Entity {
      }
 
   }
+
+    override function hasCircCollWith(e:Entity) {
+        if( e.destroyed ) return false;
+        if( e.is(Pigeon) ) return true;
+        return false;
+    }
 }
