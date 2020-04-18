@@ -47,14 +47,14 @@ class Entity {
 
     var actions : Array<{ id:String, cb:Void->Void, t:Float }> = [];
 
-    public function new(x:Int, y:Int) {
+    public function new(x:Int, y:Int, l:SpriteLib) {
         uid = Const.NEXT_UNIQ;
         ALL.push(this);
 
         cd = new dn.Cooldown(Const.FPS);
         setPosCase(x,y);
 
-        spr = new HSprite(Assets.tiles);
+        spr = new HSprite(l);
         Game.ME.scroller.add(spr, Const.DP_MAIN);
         spr.colorAdd = colorAdd = new h3d.Vector();
         spr.setCenterRatio(0.5,1);

@@ -30,7 +30,7 @@ class Game extends Process {
         // Assets.sfx.music().play(true, 0.5);
 
         // JSTOLAREK: wczytywać pozycję bohatera na podstawie pliku ogmo?
-        new en.Hero(0,0);
+        new en.Hero(0,0,Assets.pioorka);
         trace(Lang.t._("Game is ready."));
     }
 

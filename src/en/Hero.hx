@@ -3,13 +3,14 @@ package en;
 class Hero extends Entity {
   var ca : dn.heaps.Controller.ControllerAccess;
 
-  public function new(x,y) {
-    super(x,y);
+  public function new(x,y,l) {
+    super(x,y,l);
 
     this.ca = Main.ME.controller.createAccess("hero");
 
     // Some default rendering for our character
-    spr.set("fxCircle");
+    // spr.set("pioorka");
+    spr.anim.registerStateAnim("pioorka", 1, 0.4, function() return true );
   }
 
   override function dispose() { // call on garbage collection
