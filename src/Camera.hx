@@ -34,6 +34,13 @@ class Camera extends dn.Process {
     public inline function scrollerToGlobalY(v:Float) return v*Const.SCALE + Game.ME.scroller.y;
 
     var shakePower = 1.0;
+
+	public function setPosition(tx,ty) {
+		x = tx;
+		y = ty;
+		target = null;
+	}
+
     public function shakeS(t:Float, ?pow=1.0) {
         cd.setS("shaking", t, false);
         shakePower = pow;

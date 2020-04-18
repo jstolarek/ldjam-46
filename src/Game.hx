@@ -10,6 +10,8 @@ class Game extends Process {
     public var scroller : h2d.Layers;
     public var level : Level;
     public var hud : ui.Hud;
+	var camFocuses : Map<String,CPoint> = new Map();
+	public var hero : en.Hero;
 
     public function new() {
         super(Main.ME);
@@ -30,9 +32,33 @@ class Game extends Process {
         // Assets.sfx.music().play(true, 0.5);
 
         // JSTOLAREK: wczytywać pozycję bohatera na podstawie pliku ogmo?
-        new en.Hero(0,0,Assets.pioorka);
+		var oe = level.getEntities("hero")[0];
+        trace(oe.cx);
+        trace(oe.cy);
+		hero = new en.Hero(oe.cx, oe.cy,Assets.pioorka);
+        hero.setPosCase(oe.cx, oe.cy);
+		for(oe in level.getEntities("camFocus")) {
+			camFocuses.set(oe.getStr("id"), new CPoint(oe.cx,oe.cy));
+        }
+		setCameraFocus("main");
+
         trace(Lang.t._("Game is ready."));
     }
+
+	function setCameraFocus(id:String) {
+		var pt = camFocuses.get(id);
+		if( pt==null ) {
+			if( id=="main" ) {
+				camera.target = hero;
+			} else
+				setCameraFocus("main");
+		}
+		else {
+			camera.setPosition(pt.footX, pt.footY);
+		}
+
+	}
+
 
     public function onCdbReload() {
     }

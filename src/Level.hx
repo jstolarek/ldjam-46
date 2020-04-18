@@ -36,6 +36,10 @@ class Level extends dn.Process {
           }
     }
 
+	public inline function getEntities(id:String) {
+		return data.getLayerByName("entities").getEntities(id);
+	}
+
     override function postUpdate() {
         super.postUpdate();
 
