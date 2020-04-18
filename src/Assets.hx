@@ -1,12 +1,14 @@
 import dn.heaps.slib.*;
 
 class Assets {
+    public static var sfx = dn.heaps.assets.SfxDirectory.load("sfx");
     public static var fontPixel : h2d.Font;
     public static var fontTiny : h2d.Font;
     public static var fontSmall : h2d.Font;
     public static var fontMedium : h2d.Font;
     public static var fontLarge : h2d.Font;
     public static var tiles : SpriteLib;
+    public static var music : dn.heaps.Sfx;
 
     static var initDone = false;
     public static function init() {
