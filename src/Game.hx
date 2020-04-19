@@ -12,6 +12,8 @@ class Game extends Process {
     public var hud : ui.Hud;
 	var camFocuses : Map<String,CPoint> = new Map();
 	public var hero : en.Hero;
+    var mouseTrap : h2d.Interactive;
+    public var mouse : { x:Int, y:Int }
 
     public function new() {
         super(Main.ME);
@@ -32,8 +34,6 @@ class Game extends Process {
         // Assets.sfx.music().play(true, 0.5);
 
 		var oe = level.getEntities("hero")[0];
-        //trace("Hero cx loaded from OGMO: " + oe.cx);
-        //trace("Hero cy loaded from OGMO: " + oe.cy);
         hero = new en.Hero(oe.cx, oe.cy);
         hero.setPosCase(oe.cx, oe.cy);
 		for(oe in level.getEntities("camFocus")) {
@@ -41,8 +41,22 @@ class Game extends Process {
         }
 		setCameraFocus("main");
 
-        //trace(Lang.t._("Game is ready."));
+        mouseTrap = new h2d.Interactive(w(),h(),Main.ME.root);
+        mouseTrap.onMove = onMouseMove;
+        mouse = {x : 0, y : 0};
     }
+
+	override public function onResize() {
+        super.onResize();
+		mouseTrap.width = w();
+		mouseTrap.height = h();
+	}
+
+	function onMouseMove(ev:hxd.Event) {
+		var m = getMouse();
+        mouse.x = m.x;
+        mouse.y = m.y;
+	}
 
 	function setCameraFocus(id:String) {
 		var pt = camFocuses.get(id);
@@ -77,6 +91,7 @@ class Game extends Process {
         Assets.sfx.music().stop();
 
         fx.destroy();
+        mouseTrap.remove();
         for(e in Entity.ALL)
             e.destroy();
         gc();
@@ -121,5 +136,18 @@ class Game extends Process {
                 Main.ME.startGame();
         }
     }
+
+	public function getMouse() {
+		var gx = hxd.Window.getInstance().mouseX;
+		var gy = hxd.Window.getInstance().mouseY;
+		var x = Std.int( gx/Const.SCALE-scroller.x );
+		var y = Std.int( gy/Const.SCALE-scroller.y );
+		return {
+			x : x,
+			y : y,
+			cx : Std.int(x/Const.GRID),
+			cy : Std.int(y/Const.GRID),
+		}
+	}
 }
 
