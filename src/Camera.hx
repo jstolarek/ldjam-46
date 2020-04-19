@@ -6,6 +6,7 @@ class Camera extends dn.Process {
     public var dy : Float;
     public var wid(get,never) : Int;
     public var hei(get,never) : Int;
+    public var s = 0.002;
     var bumpOffX = 0.;
     var bumpOffY = 0.;
 
@@ -51,7 +52,6 @@ class Camera extends dn.Process {
 
         // Follow target entity
         if( target!=null ) {
-            var s = 0.006;
             var deadZone = 5;
             var tx = target.footX;
             var ty = target.footY;

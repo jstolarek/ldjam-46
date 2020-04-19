@@ -90,7 +90,7 @@ class Main extends dn.Process {
 
         delayer.addMs( function() {
             cb();
-            tw.createMs(mask.alpha, 0, 1500).end( mask.remove );
+            tw.createMs(mask.alpha, 0, 1000).end( mask.remove );
             },100);
         });
     }

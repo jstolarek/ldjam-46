@@ -15,6 +15,7 @@ class Level extends dn.Process {
 		project = new ogmo.Project(hxd.Res.load("map/park.ogmo"), false);
 		data = project.getLevelByName("park_level");
 
+        delayer.addF( function() { game.camera.s = 0.006; }, 120);
         //JSTOLAREK: load collision map here if we want to support collisions
     }
 
