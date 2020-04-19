@@ -25,10 +25,6 @@ class Pigeon extends Entity {
         startJob( Follow(hero), 999 );
     }
 
-    public function hit() {
-        startJob(Die, 1);
-    }
-
     public override function update() {
         super.update();
 
@@ -77,11 +73,15 @@ class Pigeon extends Entity {
     override function onTouch(e:Entity) {
         super.onTouch(e);
 
-        switch (job) {
-            case Follow(e):
-                e.hit(10);
-                startJob(Idle, rnd(1.2, 2));
-            default:
+        if (e.is(Hero)) {
+            switch (job) {
+                case Follow(e):
+                    e.hit(10);
+                    startJob(Idle, rnd(1.2, 2));
+                default:
+            }
+        } else if (e.is(Stone)) {
+            startJob(Die, 1);
         }
     }
 
