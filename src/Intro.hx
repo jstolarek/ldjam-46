@@ -11,6 +11,18 @@ class Intro extends dn.Process {
 		logo.setPosition(wid*0.475, hei*0.3);
 		tw.createMs(logo.alpha, 0>1, 1500);
 
+        var inst = new h2d.Text(Assets.fontTiny, root);
+        inst.text = [
+                     "Keep yourself alive by stoning as many pigeons as you can",
+                     "MOVE: W/S/A/D or Arrows or D-Pad",
+                     "AIM: Mouse",
+                     "FIRE: Left Mouse Button"
+                     ].join("\n");
+        inst.x = wid*0.5 - inst.textWidth*0.05;
+        inst.y = hei*0.55;
+        inst.textAlign = Center;
+        tw.createMs(inst.alpha, 500|0>1, 1000);
+
 		var tf = new h2d.Text(Assets.fontTiny, root);
 		tf.text = "Click to START";
 		tf.x = wid*0.475 - tf.textWidth*tf.scaleX*0.5;
