@@ -16,7 +16,7 @@ class Main extends dn.Process {
         // Engine settings
         hxd.Timer.wantedFPS = Const.FPS;
         engine.backgroundColor = 0xff<<24|0x111133;
-        #if (hl)
+        #if (hl && debug)
         Lib.enableFullscreen(s, this, false);
         Lib.toggleFullscreen();
         #end
@@ -98,7 +98,7 @@ class Main extends dn.Process {
 
         // Auto scaling
         if( Const.AUTO_SCALE_TARGET_WID>0 )
-            Const.SCALE = M.ceil( h()/Const.AUTO_SCALE_TARGET_WID );
+            Const.SCALE = M.ceil( w()/Const.AUTO_SCALE_TARGET_WID );
         else if( Const.AUTO_SCALE_TARGET_HEI>0 )
             Const.SCALE = M.ceil( h()/Const.AUTO_SCALE_TARGET_HEI );
         root.setScale(Const.SCALE);
