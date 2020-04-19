@@ -8,13 +8,13 @@ class Intro extends dn.Process {
 
 		var logo = Assets.tiles.h_get("title", 0.5,0.5, root);
         logo.anim.play("title", 9999);
-		logo.setPosition(wid*0.5, hei*0.3);
+		logo.setPosition(wid*0.475, hei*0.3);
 		tw.createMs(logo.alpha, 0>1, 1500);
 
-		var tf = new h2d.Text(Assets.fontSmall, root);
+		var tf = new h2d.Text(Assets.fontTiny, root);
 		tf.text = "Click to START";
-		tf.x = wid*0.5 - tf.textWidth*tf.scaleX*0.5;
-		tf.y = hei*0.62;
+		tf.x = wid*0.475 - tf.textWidth*tf.scaleX*0.5;
+		tf.y = hei*0.8;
 
 		tw.createMs(tf.alpha, 500|0>1, 1500);
 
