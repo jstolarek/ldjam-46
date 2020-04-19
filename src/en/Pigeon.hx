@@ -85,6 +85,7 @@ class Pigeon extends Entity {
     override function hasCircCollWith(e:Entity) {
         if( e.destroyed ) return false;
         if( e.is(Hero) ) return true;
+        if( e.is(Stone) ) return true;
         return false;
     }
 

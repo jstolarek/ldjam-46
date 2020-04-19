@@ -22,4 +22,6 @@ class Const {
 
     public static var HEALTH = 100;
     public static var SPEED = 0.035;
+    public static var STONE_SPEED = 0.2;
+    public static var MAX_STONES = 100;
 }

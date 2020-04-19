@@ -44,7 +44,8 @@ class Game extends Process {
 		setCameraFocus("main");
 
         mouseTrap = new h2d.Interactive(w(),h(),Main.ME.root);
-        mouseTrap.onMove = onMouseMove;
+        mouseTrap.onMove  = onMouseMove;
+        mouseTrap.onClick = onMouseClick;
         mouse = {x : 0, y : 0};
         mouseTrap.cursor = Custom(new hxd.Cursor.CustomCursor([Assets.cursorBitmap],10,16,16));
     }
@@ -60,6 +61,11 @@ class Game extends Process {
         mouse.x = m.x;
         mouse.y = m.y;
 	}
+
+    function onMouseClick(ev:hxd.Event) {
+		var m = getMouse();
+        new en.Stone(hero.cx, hero.cy, mouse.x, mouse.y);
+    }
 
 	function setCameraFocus(id:String) {
 		var pt = camFocuses.get(id);
