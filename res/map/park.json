@@ -20,10 +20,8 @@
           "name": "camFocus",
           "id": 6,
           "_eid": "22311485",
-          "x": 352,
-          "y": 208,
-          "originX": 0,
-          "originY": 0,
+          "x": 0,
+          "y": 0,
           "values": {"id": ""}
         }
       ]

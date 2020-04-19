@@ -40,7 +40,7 @@
       "exportID": "22297201",
       "exportMode": 0,
       "arrayMode": 0,
-      "defaultTileset": "bg"
+      "defaultTileset": "New Tileset"
     },
     {
       "definition": "tile",
@@ -49,7 +49,7 @@
       "exportID": "22256852",
       "exportMode": 0,
       "arrayMode": 1,
-      "defaultTileset": "bg"
+      "defaultTileset": "New Tileset"
     }
   ],
   "entities": [
@@ -95,7 +95,7 @@
       "limit": 1,
       "size": {"x": 16, "y": 16},
       "origin": {"x": 0, "y": 0},
-      "originAnchored": true,
+      "originAnchored": false,
       "shape": {
         "label": "Rectangle",
         "points": [
