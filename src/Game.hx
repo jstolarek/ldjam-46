@@ -63,8 +63,10 @@ class Game extends Process {
 	}
 
     function onMouseClick(ev:hxd.Event) {
+      if (!cd.hasSetMs("stone", Const.STONE_COOLDOWN)) {
 		var m = getMouse();
         new en.Stone(hero.cx, hero.cy, mouse.x, mouse.y);
+      }
     }
 
 	function setCameraFocus(id:String) {

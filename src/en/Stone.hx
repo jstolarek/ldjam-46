@@ -5,7 +5,8 @@ class Stone extends Entity {
 
   public function new(cx, cy, tx, ty) {
     super(cx,cy);
-    frict=0.99;
+    frict=Const.STONE_FRICT;
+    yr=0.8;
     var fx = (cx+0.5)*Const.GRID;
     var fy = (cy+0.5)*Const.GRID;
     var norm = M.dist(fx, fy, tx, ty);
