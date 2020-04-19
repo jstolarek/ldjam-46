@@ -21,6 +21,7 @@ class Hero extends Entity {
   var ca : dn.heaps.Controller.ControllerAccess;
   var direction : Direction;
   var state : State;
+  var acc : Float;
   public var health : Int;
 
   public function new(x,y) {
@@ -28,7 +29,8 @@ class Hero extends Entity {
 
     this.ca = Main.ME.controller.createAccess("hero");
     this.direction = RIGHT;
-    this.health = 100;
+    this.health = Const.HEALTH;
+    acc = Const.SPEED;
 
     spr.anim.registerStateAnim("hero-walk-up", 2, 0.4, function() return isWalk() && direction == UP );
     spr.anim.registerStateAnim("hero-walk-diagonal-top-right", 2, 0.4, function() return isWalk() && (direction == UP_RIGHT || direction == UP_LEFT ));
@@ -51,14 +53,14 @@ class Hero extends Entity {
     ca.dispose(); // release on destruction
   }
 
-  override function update() { // the Entity main loop
+  override function fixedUpdate() { // the Entity main loop
     super.update();
 
     state = IDLE;
 
     if( ca.dpadLeftDown() ) {
       if (centerX>=Const.GRID/2) {
-        dx -= 0.02*tmod;
+        dx -= acc;
       }
       state = WALK;
     }
@@ -67,7 +69,7 @@ class Hero extends Entity {
 
     if( ca.dpadRightDown() ) {
       if ( centerX <= (level.wid - 0.5) * Const.GRID ) {
-        dx += 0.02*tmod;
+        dx += acc;
       }
       state = WALK;
     }
@@ -78,7 +80,7 @@ class Hero extends Entity {
 
     if( ca.dpadUpDown() ) {
       if (headY >= 0) {
-        dy -= 0.02*tmod;
+        dy -= acc;
       }
       state = WALK;
     }
@@ -87,7 +89,7 @@ class Hero extends Entity {
 
     if( ca.dpadDownDown() ) {
       if (footY <= level.hei * Const.GRID) {
-        dy += 0.02*tmod;
+        dy += acc;
       }
       state = WALK;
     }

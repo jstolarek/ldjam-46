@@ -19,4 +19,7 @@ class Const {
     public static var DP_FX_FRONT = _inc++;
     public static var DP_TOP = _inc++;
     public static var DP_UI = _inc++;
+
+    public static var HEALTH = 100;
+    public static var SPEED = 0.035;
 }
