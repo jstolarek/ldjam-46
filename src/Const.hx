@@ -26,4 +26,5 @@ class Const {
     public static var STONE_FRICT = 0.92;
     public static var MAX_STONES = 100;
     public static var STONE_COOLDOWN = 250; //ms
+    public static var PIGEON_STRENGTH = 10;
 }

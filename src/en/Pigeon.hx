@@ -76,7 +76,7 @@ class Pigeon extends Entity {
         if (e.is(Hero)) {
             switch (job) {
                 case Follow(e):
-                    e.hit(10);
+                    e.hit(Const.PIGEON_STRENGTH);
                     startJob(Idle, rnd(1.2, 2));
                 default:
             }
