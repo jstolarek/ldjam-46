@@ -29,6 +29,7 @@ class Assets {
         game.defineAnim("hero-walk-down", "0-6");
         game.defineAnim("hero-walk-right", "0-6");
         game.defineAnim("hero-walk-up", "0-6");
+        game.defineAnim("skull", "0-59");
 
     }
 }
