@@ -60,9 +60,7 @@ class Hero extends Entity {
       if (centerX>=Const.GRID/2) {
         dx -= 0.02*tmod;
       }
-      direction = LEFT;
       state = WALK;
-      set_dir(-1);
     }
 
     if (! (centerX>=Const.GRID/2)){ dx = 0; cx = 0; xr = 0.5; }
@@ -71,9 +69,7 @@ class Hero extends Entity {
       if ( centerX <= (level.wid - 0.5) * Const.GRID ) {
         dx += 0.02*tmod;
       }
-      direction = RIGHT;
       state = WALK;
-      set_dir(1);
     }
 
     if ( ! (centerX <= (level.wid - 0.5) * Const.GRID) ) {
@@ -84,7 +80,6 @@ class Hero extends Entity {
       if (headY >= 0) {
         dy -= 0.02*tmod;
       }
-      direction = UP;
       state = WALK;
     }
 
@@ -94,23 +89,35 @@ class Hero extends Entity {
       if (footY <= level.hei * Const.GRID) {
         dy += 0.02*tmod;
       }
-      direction = DOWN;
       state = WALK;
     }
 
     if (! (footY <= level.hei * Const.GRID)) { dy = 0; cy = level.hei-1; yr = 1; }
 
-    if (ca.dpadLeftDown() && ca.dpadUpDown()) {
-      direction = UP_LEFT;
-    }
-    if (ca.dpadLeftDown() && ca.dpadDownDown()) {
-      direction = DOWN_LEFT;
-    }
-    if (ca.dpadRightDown() && ca.dpadUpDown()) {
+    var angle = M.angTo(Game.ME.hero.centerX, Game.ME.hero.centerY, Game.ME.mouse.x, Game.ME.mouse.y );
+
+    if (angle > -M.PI/8 && angle <= M.PI/8 ) {
+      direction = RIGHT;
+      set_dir(1);
+    } else if (angle < -1/8*M.PI && angle >= -3/8*M.PI) {
       direction = UP_RIGHT;
-    }
-    if (ca.dpadRightDown() && ca.dpadDownDown()) {
+      set_dir(1);
+    } else if (angle < -3/8*M.PI && angle >= -5/8*M.PI) {
+      direction = UP;
+    } else if (angle < -5/8*M.PI && angle >= -7/8*M.PI) {
+      direction = UP_LEFT;
+      set_dir(-1);
+    } else if (angle < -7/8*M.PI) {
+      direction = LEFT;
+      set_dir(-1);
+    } else if (angle > 1/8*M.PI && angle <= 3/8*M.PI) {
       direction = DOWN_RIGHT;
+      set_dir(1);
+    } else if (angle > 3/8*M.PI && angle <= 5/8*M.PI) {
+      direction = DOWN;
+    } else if (angle > 5/8*M.PI && angle <= 7/8*M.PI) {
+      direction = DOWN_LEFT;
+      set_dir(-1);
     }
   }
 }
