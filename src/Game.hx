@@ -58,6 +58,10 @@ class Game extends Process {
 		mouseTrap.height = h();
 	}
 
+    public function addScore() {
+      score += Const.PIGEON_SCORE;
+    }
+
 	function onMouseMove(ev:hxd.Event) {
 		var m = getMouse();
         mouse.x = m.x;

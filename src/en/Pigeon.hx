@@ -82,6 +82,7 @@ class Pigeon extends Entity {
                 default:
             }
         } else if (e.is(Stone)) {
+            Game.ME.addScore();
             startJob(Die, 1);
             Assets.sfx.hit().play(false, 0.4);
         }

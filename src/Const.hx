@@ -27,4 +27,5 @@ class Const {
     public static var MAX_STONES = 100;
     public static var STONE_COOLDOWN = 250; //ms
     public static var PIGEON_STRENGTH = 10;
+    public static var PIGEON_SCORE = 10;
 }
