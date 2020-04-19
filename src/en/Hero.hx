@@ -21,12 +21,14 @@ class Hero extends Entity {
   var ca : dn.heaps.Controller.ControllerAccess;
   var direction : Direction;
   var state : State;
+  public var health : Int;
 
   public function new(x,y) {
     super(x,y);
 
     this.ca = Main.ME.controller.createAccess("hero");
     this.direction = RIGHT;
+    this.health = 100;
 
     spr.anim.registerStateAnim("hero-walk-up", 2, 0.4, function() return isWalk() && direction == UP );
     spr.anim.registerStateAnim("hero-walk-diagonal-top-right", 2, 0.4, function() return isWalk() && (direction == UP_RIGHT || direction == UP_LEFT ));

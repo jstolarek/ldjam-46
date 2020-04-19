@@ -14,6 +14,13 @@ class Hud extends dn.Process {
         createRootInLayers(game.root, Const.DP_UI);
 
         flow = new h2d.Flow(root);
+		var tf = new h2d.Text(Assets.fontSmall,root);
+		tf.x = 5;
+		tf.y = 1;
+		createChildProcess(function(_) {
+			if( itime%5==0 )
+              tf.text = "Health: "+ Game.ME.hero.health + " / FPS: " + Std.string(pretty(hxd.Timer.fps()));
+		});
     }
 
     override function onDispose() {
