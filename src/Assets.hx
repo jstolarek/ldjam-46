@@ -8,7 +8,7 @@ class Assets {
     public static var fontMedium : h2d.Font;
     public static var fontLarge : h2d.Font;
     public static var tiles : SpriteLib;
-    public static var pioorka : SpriteLib;
+    public static var game : SpriteLib;
 
     static var initDone = false;
     public static function init() {
@@ -22,7 +22,13 @@ class Assets {
         fontMedium = hxd.Res.fonts.barlow_condensed_medium_regular_17.toFont();
         fontLarge = hxd.Res.fonts.barlow_condensed_medium_regular_32.toFont();
         tiles = dn.heaps.assets.Atlas.load("atlas/tiles.atlas");
-        pioorka = dn.heaps.assets.Atlas.load("atlas/pioorka.atlas");
-        pioorka.defineAnim("pioorka", "0-51");
+        game = dn.heaps.assets.Atlas.load("atlas/game.atlas");
+        game.defineAnim("hero-idle", "0-9");
+        game.defineAnim("hero-walk-diagonal-down-right", "0-6");
+        game.defineAnim("hero-walk-diagonal-top-right", "0-6");
+        game.defineAnim("hero-walk-down", "0-6");
+        game.defineAnim("hero-walk-right", "0-6");
+        game.defineAnim("hero-walk-up", "0-6");
+
     }
 }
