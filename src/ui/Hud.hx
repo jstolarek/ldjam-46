@@ -17,8 +17,12 @@ class Hud extends dn.Process {
 		tf.x = 5;
 		tf.y = 1;
 		createChildProcess(function(_) {
+            #if (!debug)
+              tf.text = "Health: "+ Game.ME.hero.health;
+            #else
               tf.text = "Health: "+ Game.ME.hero.health + " / FPS: " + Std.string(pretty(hxd.Timer.fps())) + "\n" +
                 "Mouse X: " + Game.ME.mouse.x + ", mouse Y: " + Game.ME.mouse.y;
+            #end
 		});
     }
 

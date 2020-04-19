@@ -8,12 +8,11 @@ class Intro extends dn.Process {
 
 		var logo = Assets.tiles.h_get("title", 0.5,0.5, root);
         logo.anim.play("title", 9999);
-        $type(logo);
 		logo.setPosition(wid*0.5, hei*0.3);
 		tw.createMs(logo.alpha, 0>1, 1500);
 
-		var tf = new h2d.Text(Assets.fontMedium, root);
-		tf.text = "Ludum Dare 46";
+		var tf = new h2d.Text(Assets.fontSmall, root);
+		tf.text = "Click to START";
 		tf.x = wid*0.5 - tf.textWidth*tf.scaleX*0.5;
 		tf.y = hei*0.62;
 

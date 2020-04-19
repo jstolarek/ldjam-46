@@ -13,7 +13,7 @@ class Level extends dn.Process {
         super(Game.ME);
         createRootInLayers(Game.ME.scroller, Const.DP_BG);
 		project = new ogmo.Project(hxd.Res.load("map/park.ogmo"), false);
-		data = project.getLevelByName("park");
+		data = project.getLevelByName("park_level");
 
         //JSTOLAREK: load collision map here if we want to support collisions
     }
