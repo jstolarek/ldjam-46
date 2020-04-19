@@ -31,10 +31,9 @@ class Game extends Process {
         // JSTOLAREK: ODKOMENTOWAĆ W FINALNEJ WERSJI
         // Assets.sfx.music().play(true, 0.5);
 
-        // JSTOLAREK: wczytywać pozycję bohatera na podstawie pliku ogmo?
 		var oe = level.getEntities("hero")[0];
-        trace(oe.cx);
-        trace(oe.cy);
+        trace("Hero cx loaded from OGMO: " + oe.cx);
+        trace("Hero cy loaded from OGMO: " + oe.cy);
 		hero = new en.Hero(oe.cx, oe.cy,Assets.pioorka);
         hero.setPosCase(oe.cx, oe.cy);
 		for(oe in level.getEntities("camFocus")) {
