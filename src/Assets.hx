@@ -7,6 +7,7 @@ class Assets {
     public static var fontSmall : h2d.Font;
     public static var fontMedium : h2d.Font;
     public static var fontLarge : h2d.Font;
+    public static var cursorBitmap : hxd.BitmapData;
     public static var tiles : SpriteLib;
 
     static var initDone = false;
@@ -20,6 +21,8 @@ class Assets {
         fontSmall = hxd.Res.fonts.barlow_condensed_medium_regular_11.toFont();
         fontMedium = hxd.Res.fonts.barlow_condensed_medium_regular_17.toFont();
         fontLarge = hxd.Res.fonts.barlow_condensed_medium_regular_32.toFont();
+        cursorBitmap = hxd.Res.atlas.cursor.toBitmap();
+
         tiles = dn.heaps.assets.Atlas.load("atlas/tiles.atlas");
         tiles.defineAnim("hero-idle", "0-9");
         tiles.defineAnim("hero-walk-diagonal-down-right", "0-6");

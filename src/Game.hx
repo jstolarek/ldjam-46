@@ -46,6 +46,7 @@ class Game extends Process {
         mouseTrap = new h2d.Interactive(w(),h(),Main.ME.root);
         mouseTrap.onMove = onMouseMove;
         mouse = {x : 0, y : 0};
+        mouseTrap.cursor = Custom(new hxd.Cursor.CustomCursor([Assets.cursorBitmap],10,16,16));
     }
 
 	override public function onResize() {
