@@ -3,6 +3,7 @@ package en;
 enum Job {
     Idle;
     Follow(e:Hero);
+    Die;
 }
 
 class Pigeon extends Entity {
@@ -18,26 +19,32 @@ class Pigeon extends Entity {
         ALL.push(this);
 
         spr.anim.registerStateAnim("golab-side", 1, 0.4, function() return true );
+        spr.anim.registerStateAnim("pioorka", 2, 0.4, function() return isOnJob(Die) );
         spr.colorMatrix = dn.Color.getColorizeMatrixH2d( dn.Color.makeColorHsl(rnd(0,1), 0.5, 1), rnd(0,0.3));
 
         startJob( Follow(hero), 999 );
     }
 
     public function hit() {
-        destroy();
+        startJob(Die, 1);
     }
 
     public override function update() {
         super.update();
 
+        // if( Game.ME.ca.isKeyboardPressed(hxd.Key.C) ) {
+        //     hit();
+        // }
+
+
         switch (job) {
-            case Idle:
             case Follow(e):
                 if (e.destroyed) {
                     startJob(Idle, 999);
                 } else {
                     setTarget(e.cx,e.cy);
                 }
+            default:
         }
 
         var spd = 0.01;
@@ -53,6 +60,7 @@ class Pigeon extends Entity {
         var doingIt = switch( job ) {
             case Idle: true;
             case Follow(e) : true;
+            case Die: true;
         }
         if( doingIt ) {
             jobDurationS-=1/Const.FPS;
@@ -83,6 +91,7 @@ class Pigeon extends Entity {
     }
 
     override function hasCircCollWith(e:Entity) {
+        if( isOnJob(Die) ) return false;
         if( e.destroyed ) return false;
         if( e.is(Hero) ) return true;
         if( e.is(Stone) ) return true;
@@ -95,15 +104,26 @@ class Pigeon extends Entity {
         jobDurationS = d;
     }
 
+    public inline function isOnJob(k:Job) {
+        return job != null && job.getIndex() == k.getIndex();
+    }
+
     function stop() {
         target = null;
     }
 
     function onJobComplete() {
-        if (hero != null && !hero.destroyed) {
-            startJob(Follow(hero), 999);
-        } else {
-            startJob(Idle, 999);
+        switch (job) {
+            case Idle:
+                if (hero != null && !hero.destroyed) {
+                    startJob(Follow(hero), 999);
+                } else {
+                    startJob(Idle, 999);
+                }
+            case Follow(e):
+                startJob(Idle, 999);
+            case Die:
+                destroy();
         }
     }
 
