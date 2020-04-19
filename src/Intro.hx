@@ -1,3 +1,5 @@
+import hxd.Key;
+
 class Intro extends dn.Process {
 	public function new() {
 		super(Main.ME);
@@ -14,17 +16,20 @@ class Intro extends dn.Process {
         var inst = new h2d.Text(Assets.fontTiny, root);
         inst.text = [
                      "Keep yourself alive by stoning as many pigeons as you can",
-                     "MOVE: W/S/A/D or Arrows or D-Pad",
+                     "MOVE: W/S/A/D  or  Arrows  or  D-Pad",
                      "AIM: Mouse",
                      "FIRE: Left Mouse Button"
+                     #if hl
+                     ,"QUIT: press Escape  twice"
+                     #end
                      ].join("\n");
         inst.x = wid*0.5 - inst.textWidth*0.05;
-        inst.y = hei*0.55;
+        inst.y = hei*0.5;
         inst.textAlign = Center;
         tw.createMs(inst.alpha, 500|0>1, 1000);
 
 		var tf = new h2d.Text(Assets.fontTiny, root);
-		tf.text = "Click to START";
+		tf.text = "Click anywhere  to START";
 		tf.x = wid*0.475 - tf.textWidth*tf.scaleX*0.5;
 		tf.y = hei*0.8;
 
@@ -36,4 +41,20 @@ class Intro extends dn.Process {
           Main.ME.transition(this, function() new Game());
         }
 	}
+
+    override function update() {
+        super.update();
+
+        if( !ui.Console.ME.isActive() && !ui.Modal.hasAny() ) {
+            #if hl
+            // Exit
+            if( Main.ME.ca.isKeyboardPressed(Key.ESCAPE) )
+                if( !cd.hasSetS("exitWarn",3) )
+                    trace(Lang.t._("Press ESCAPE again to exit."));
+                else
+                    hxd.System.exit();
+            #end
+        }
+    }
+
 }

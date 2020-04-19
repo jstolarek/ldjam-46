@@ -1,3 +1,5 @@
+import hxd.Key;
+
 class Outro extends dn.Process {
 	public function new() {
 		super(Main.ME);
@@ -24,6 +26,21 @@ class Outro extends dn.Process {
 		var i = new h2d.Interactive(w(), h(), root);
 		i.onClick = function(_) {
           Main.ME.transition(this, function() new Intro(), 0xff<<24|0x290A33);
+        }
+    }
+
+    override function update() {
+        super.update();
+
+        if( !ui.Console.ME.isActive() && !ui.Modal.hasAny() ) {
+            #if hl
+            // Exit
+            if( Main.ME.ca.isKeyboardPressed(Key.ESCAPE) )
+                if( !cd.hasSetS("exitWarn",3) )
+                    trace(Lang.t._("Press ESCAPE again to exit."));
+                else
+                    hxd.System.exit();
+            #end
         }
     }
 }
