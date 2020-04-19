@@ -55,38 +55,48 @@ class Hero extends Entity {
     state = IDLE;
 
     if( ca.dpadLeftDown() ) {
-      if (centerX>Const.GRID/2) {
+      if (centerX>=Const.GRID/2) {
         dx -= 0.02*tmod;
-      } else { dx = 0; cx = 0; xr = 0.5; }
+      }
       direction = LEFT;
       state = WALK;
       set_dir(-1);
     }
 
+    if (! (centerX>=Const.GRID/2)){ dx = 0; cx = 0; xr = 0.5; }
+
     if( ca.dpadRightDown() ) {
       if ( centerX <= (level.wid - 0.5) * Const.GRID ) {
         dx += 0.02*tmod;
-      } else { dx = 0; cx = level.wid-1; xr = 0.5; }
+      }
       direction = RIGHT;
       state = WALK;
       set_dir(1);
     }
 
+    if ( ! (centerX <= (level.wid - 0.5) * Const.GRID) ) {
+      dx = 0; cx = level.wid-1; xr = 0.5;
+    }
+
     if( ca.dpadUpDown() ) {
       if (headY >= 0) {
         dy -= 0.02*tmod;
-      } else { dy = 0; cy = 0; yr = 1;}
+      }
       direction = UP;
       state = WALK;
     }
 
+    if (! (headY >= 0)) { dy = 0; cy = 0; yr = 1;}
+
     if( ca.dpadDownDown() ) {
       if (footY <= level.hei * Const.GRID) {
         dy += 0.02*tmod;
-      } else { dy = 0; cy = level.hei-1; yr = 1; }
+      }
       direction = DOWN;
       state = WALK;
     }
+
+    if (! (footY <= level.hei * Const.GRID)) { dy = 0; cy = level.hei-1; yr = 1; }
 
     if (ca.dpadLeftDown() && ca.dpadUpDown()) {
       direction = UP_LEFT;
