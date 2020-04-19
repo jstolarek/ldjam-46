@@ -14,6 +14,7 @@ class Game extends Process {
     public var pigeon : en.Pigeon;
     var mouseTrap : h2d.Interactive;
     public var mouse : { x:Int, y:Int }
+    public var score : Int;
 
     public function new() {
         super(Main.ME);
@@ -36,6 +37,7 @@ class Game extends Process {
 		var oe = level.getEntities("hero")[0];
         hero = new en.Hero(oe.cx, oe.cy);
         pigeon = new en.Pigeon(5,5);
+        score = 0;
 
         hero.setPosCase(oe.cx, oe.cy);
 		for(oe in level.getEntities("camFocus")) {
