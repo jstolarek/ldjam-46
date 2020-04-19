@@ -15,7 +15,7 @@ class Main extends dn.Process {
 
         // Engine settings
         hxd.Timer.wantedFPS = Const.FPS;
-        engine.backgroundColor = 0xff<<24|0x111133;
+        engine.backgroundColor = 0xff<<24|0x290A33;
         #if (hl)
         Lib.enableFullscreen(s, this, false);
         #if (!debug)
@@ -80,7 +80,7 @@ class Main extends dn.Process {
     if( p!=null )
       p.pause();
 
-    var mask = new h2d.Bitmap( h2d.Tile.fromColor(addAlpha(0xFFEEBB)), Boot.ME.s2d);
+    var mask = new h2d.Bitmap( h2d.Tile.fromColor(addAlpha(0x86BB77)), Boot.ME.s2d);
     mask.scaleX = w()/mask.tile.width;
     mask.scaleY = h()/mask.tile.height;
 
