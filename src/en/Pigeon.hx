@@ -78,10 +78,12 @@ class Pigeon extends Entity {
                 case Follow(e):
                     e.hit(Const.PIGEON_STRENGTH);
                     startJob(Idle, rnd(1.2, 2));
+                    Assets.sfx.peck().play(false, 0.4);
                 default:
             }
         } else if (e.is(Stone)) {
             startJob(Die, 1);
+            Assets.sfx.hit().play(false, 0.4);
         }
     }
 
