@@ -24,19 +24,6 @@ class Assets {
         cursorBitmap = hxd.Res.atlas.cursor.toBitmap();
 
         tiles = dn.heaps.assets.Atlas.load("atlas/tiles.atlas");
-        tiles.defineAnim("hero-idle", "0-9");
-        tiles.defineAnim("hero-walk-diagonal-down-right", "0-6");
-        tiles.defineAnim("hero-walk-diagonal-top-right", "0-6");
-        tiles.defineAnim("hero-walk-down", "0-6");
-        tiles.defineAnim("hero-walk-right", "0-6");
-        tiles.defineAnim("hero-walk-up", "0-6");
-        tiles.defineAnim("skull", "0-59");
-        tiles.defineAnim("slighshot", "0-59");
-        tiles.defineAnim("golab-down", "0-5");
-        tiles.defineAnim("golab-side", "0-8");
-        tiles.defineAnim("golab-up", "0-5");
         tiles.defineAnim("title", "0(120), 1-16(5)");
-        tiles.defineAnim("stone", "0");
-        tiles.defineAnim("cursor", "0");
     }
 }
