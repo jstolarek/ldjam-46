@@ -53,6 +53,7 @@ class Hero extends Entity {
 
   public function hit(dmg:Int) {
       health -= dmg;
+      if (health <= 0) { Main.ME.transition(Game.ME, function() new Outro()); }
   }
 
   override function dispose() { // call on garbage collection
