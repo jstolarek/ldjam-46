@@ -17,7 +17,9 @@ class Main extends dn.Process {
         hxd.Timer.wantedFPS = Const.FPS;
         engine.backgroundColor = 0xff<<24|0x111133;
         Lib.enableFullscreen(s, this, false);
+        #if (hl)
         Lib.toggleFullscreen();
+        #end
 
         // Resources
         #if(hl && debug)
