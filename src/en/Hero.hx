@@ -22,10 +22,13 @@ class Hero extends Entity {
   var direction : Direction;
   var state : State;
   var acc : Float;
+  var kol : Int;
   public var health : Int;
 
   public function new(x,y) {
     super(x,y);
+
+    kol = 0;
 
     this.ca = Main.ME.controller.createAccess("hero");
     this.direction = RIGHT;
@@ -121,5 +124,52 @@ class Hero extends Entity {
       direction = DOWN_LEFT;
       set_dir(-1);
     }
+
+     if( xr>0.7 && level.hasCollision(cx+1,cy) ) {
+       xr = 0.7;
+       if (dx > 0) {
+         dx/=2;
+       }
+     }
+     if( xr>=0.6 && level.hasCollision(cx+1,cy) ) {
+       if ( dx > 0 ) {
+         dx/=4;
+       }
+     }
+     if( xr<0.3 && level.hasCollision(cx-1,cy) ) {
+       xr = 0.3;
+       if (dx < 0) {
+         dx/=2;
+       }
+     }
+     if( xr<0.4 && level.hasCollision(cx-1,cy) ) {
+       if (dx < 0) {
+         dx/=4;
+       }
+     }
+
+     if( yr>0.95 && level.hasCollision(cx,cy+1) ) {
+       yr = 0.95;
+       if (dy > 0) {
+         dy/=2;
+       }
+     }
+     if( yr>=0.8 && level.hasCollision(cx,cy+1) ) {
+       if ( dy > 0 ) {
+         dy/=4;
+       }
+     }
+     if( yr<0.3 && level.hasCollision(cx,cy-1) ) {
+       yr = 0.3;
+       if (dy < 0) {
+         dy/=2;
+       }
+     }
+     if( yr<0.4 && level.hasCollision(cx,cy-1) ) {
+       if (dy < 0) {
+         dy/=4;
+       }
+     }
+
   }
 }
