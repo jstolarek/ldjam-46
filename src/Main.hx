@@ -64,18 +64,33 @@ class Main extends dn.Process {
 
         // Start
         new dn.heaps.GameFocusHelper(Boot.ME.s2d, Assets.fontMedium);
-        delayer.addF( startGame, 1 );
+
+        delayer.addF( function() {
+            #if !debug
+            new Intro();
+            #else
+            new Game();
+            #end
+          }, 1);
     }
 
-    public function startGame() {
-        if( Game.ME!=null ) {
-            Game.ME.destroy();
-            delayer.addF(function() {
-                new Game();
-            }, 1);
-        }
-        else
-            new Game();
+  public function transition( p:dn.Process, cb:Void->Void ) {
+    if( p!=null )
+      p.pause();
+
+    var mask = new h2d.Bitmap( h2d.Tile.fromColor(addAlpha(0xFFEEBB)), Boot.ME.s2d);
+    mask.scaleX = w()/mask.tile.width;
+    mask.scaleY = h()/mask.tile.height;
+
+    tw.createMs(mask.alpha, 0>1, 500).end( function() {
+        if( p!=null )
+          p.destroy();
+
+        delayer.addMs( function() {
+            cb();
+            tw.createMs(mask.alpha, 0, 1500).end( mask.remove );
+            },100);
+        });
     }
 
     override public function onResize() {
