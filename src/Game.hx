@@ -32,16 +32,16 @@ class Game extends Process {
         // Assets.sfx.music().play(true, 0.5);
 
 		var oe = level.getEntities("hero")[0];
-        trace("Hero cx loaded from OGMO: " + oe.cx);
-        trace("Hero cy loaded from OGMO: " + oe.cy);
-	hero = new en.Hero(oe.cx, oe.cy);
+        //trace("Hero cx loaded from OGMO: " + oe.cx);
+        //trace("Hero cy loaded from OGMO: " + oe.cy);
+        hero = new en.Hero(oe.cx, oe.cy);
         hero.setPosCase(oe.cx, oe.cy);
 		for(oe in level.getEntities("camFocus")) {
 			camFocuses.set(oe.getStr("id"), new CPoint(oe.cx,oe.cy));
         }
 		setCameraFocus("main");
 
-        trace(Lang.t._("Game is ready."));
+        //trace(Lang.t._("Game is ready."));
     }
 
 	function setCameraFocus(id:String) {
