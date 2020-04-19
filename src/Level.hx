@@ -3,7 +3,7 @@ class Level extends dn.Process {
     public var fx(get,never) : Fx; inline function get_fx() return Game.ME.fx;
 
     public var wid(get,never) : Int; inline function get_wid() return 40;
-    public var hei(get,never) : Int; inline function get_hei() return 20;
+    public var hei(get,never) : Int; inline function get_hei() return 24;
 
 	var project : ogmo.Project;
 	var data : ogmo.Level;
