@@ -29,6 +29,8 @@ class Assets {
         tiles.defineAnim("hero-walk-up", "0-6");
         tiles.defineAnim("skull", "0-59");
         tiles.defineAnim("slighshot", "0-59");
-
+        tiles.defineAnim("golab-down", "0-5");
+        tiles.defineAnim("golab-side", "0-8");
+        tiles.defineAnim("golab-up", "0-5");
     }
 }
