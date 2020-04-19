@@ -76,11 +76,11 @@ class Main extends dn.Process {
           }, 1);
     }
 
-  public function transition( p:dn.Process, cb:Void->Void ) {
+  public function transition( p:dn.Process, cb:Void->Void, ?color=0x86BB77 ) {
     if( p!=null )
       p.pause();
 
-    var mask = new h2d.Bitmap( h2d.Tile.fromColor(addAlpha(0x86BB77)), Boot.ME.s2d);
+    var mask = new h2d.Bitmap( h2d.Tile.fromColor(addAlpha(color)), Boot.ME.s2d);
     mask.scaleX = w()/mask.tile.width;
     mask.scaleY = h()/mask.tile.height;
 

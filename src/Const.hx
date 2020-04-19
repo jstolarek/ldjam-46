@@ -20,7 +20,11 @@ class Const {
     public static var DP_TOP = _inc++;
     public static var DP_UI = _inc++;
 
+#if !debug
     public static var HEALTH = 100;
+#else
+    public static var HEALTH = 10;
+#end
     public static var SPEED = 0.035;
     public static var STONE_SPEED = 0.8;
     public static var STONE_FRICT = 0.92;

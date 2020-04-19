@@ -23,7 +23,7 @@ class Outro extends dn.Process {
 
 		var i = new h2d.Interactive(w(), h(), root);
 		i.onClick = function(_) {
-          Main.ME.transition(this, function() new Intro());
+          Main.ME.transition(this, function() new Intro(), 0xff<<24|0x290A33);
         }
     }
 }
