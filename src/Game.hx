@@ -28,8 +28,9 @@ class Game extends Process {
         camera = new Camera();
         level = new Level();
         hud = new ui.Hud();
-        // JSTOLAREK: ODKOMENTOWAĆ W FINALNEJ WERSJI
-        // Assets.sfx.music().play(true, 0.5);
+        #if (!debug)
+        Assets.sfx.music().play(true, 0.5);
+        #end
 
 		var oe = level.getEntities("hero")[0];
         hero = new en.Hero(oe.cx, oe.cy);
