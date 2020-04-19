@@ -5,7 +5,6 @@ class Game extends Process {
     public static var ME : Game;
 
     public var ca : dn.heaps.Controller.ControllerAccess;
-    public var fx : Fx;
     public var camera : Camera;
     public var scroller : h2d.Layers;
     public var level : Level;
@@ -28,7 +27,6 @@ class Game extends Process {
 
         camera = new Camera();
         level = new Level();
-        fx = new Fx();
         hud = new ui.Hud();
         // JSTOLAREK: ODKOMENTOWAĆ W FINALNEJ WERSJI
         // Assets.sfx.music().play(true, 0.5);
@@ -90,7 +88,6 @@ class Game extends Process {
         super.onDispose();
         Assets.sfx.music().stop();
 
-        fx.destroy();
         mouseTrap.remove();
         for(e in Entity.ALL)
             e.destroy();
