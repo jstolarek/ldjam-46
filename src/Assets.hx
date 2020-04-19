@@ -33,5 +33,7 @@ class Assets {
         tiles.defineAnim("golab-side", "0-8");
         tiles.defineAnim("golab-up", "0-5");
         tiles.defineAnim("title", "0(120), 1-16(5)");
+        tiles.defineAnim("stone", "0");
+        tiles.defineAnim("cursor", "0");
     }
 }
