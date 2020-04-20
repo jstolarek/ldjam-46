@@ -33,7 +33,7 @@ class Game extends Process {
         level = new Level();
         hud = new ui.Hud();
         #if (!debug)
-        Assets.sfx.music().play(true, 0.5);
+        Assets.music.play(true, 0.5);
         #end
 
 		var oe = level.getEntities("hero")[0];
@@ -114,7 +114,7 @@ class Game extends Process {
 
     override function onDispose() {
         super.onDispose();
-        Assets.sfx.music().stop();
+        Assets.music.stop();
 
         mouseTrap.remove();
         for(e in Entity.ALL)

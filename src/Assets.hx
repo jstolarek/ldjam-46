@@ -1,7 +1,9 @@
 import dn.heaps.slib.*;
+import dn.heaps.Sfx;
 
 class Assets {
     public static var sfx = dn.heaps.assets.SfxDirectory.load("sfx");
+    public static var music: Sfx;
     public static var fontPixel : h2d.Font;
     public static var fontTiny : h2d.Font;
     public static var fontSmall : h2d.Font;
@@ -15,6 +17,12 @@ class Assets {
         if( initDone )
             return;
         initDone = true;
+
+        #if hl
+        music = new Sfx( hxd.Res.music_hl );
+        #else
+        music = new Sfx( hxd.Res.music_js );
+        #end
 
         fontPixel = hxd.Res.fonts.minecraftiaOutline.toFont();
         fontTiny = hxd.Res.fonts.barlow_condensed_medium_regular_9.toFont();
