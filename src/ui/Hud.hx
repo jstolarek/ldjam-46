@@ -18,9 +18,9 @@ class Hud extends dn.Process {
 		tf.y = 1;
 		createChildProcess(function(_) {
             #if (!debug)
-              tf.text = "Health: "+ Game.ME.hero.health + "\nScore: " + Game.ME.score;
+              tf.text = "Health: "+ Game.ME.hero.health + "   Bread: " + en.Breadcrumbs.limit  + "\nScore: " + Game.ME.score;
             #else
-              tf.text = "Health: "+ Game.ME.hero.health + "\nScore: " + Game.ME.score+ "\nFPS: " + Std.string(pretty(hxd.Timer.fps())) +
+              tf.text = "Health: "+ Game.ME.hero.health + "   Bread: " + en.Breadcrumbs.limit  + "\nScore: " + Game.ME.score+ "\nFPS: " + Std.string(pretty(hxd.Timer.fps())) +
                 "\nMouse X: " + Game.ME.mouse.x + ", mouse Y: " + Game.ME.mouse.y;
             #end
 		});
