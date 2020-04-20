@@ -58,6 +58,7 @@ class Hero extends Entity {
 
   public function hit(dmg:Int) {
       health -= dmg;
+      Game.ME.camera.shakeS(0.5);
       if (isDead()) {
       Main.ME.delayer.addF( function() {
         Main.ME.transition(Game.ME, function() new Outro());
