@@ -6,7 +6,8 @@ class Spawner extends Entity {
     var intervMult = 0.95;
 
     public function new() {
-        super(-1, -1);
+        super(0, 0);
+        spr.tile.setSize(0, 0);
     }
 
     public override function update() {
