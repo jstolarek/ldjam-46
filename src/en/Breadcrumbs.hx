@@ -18,6 +18,9 @@ class Breadcrumbs extends Entity {
   function new(cx, cy, tx, ty) {
     super(cx,cy);
 
+    Game.ME.scroller.removeChild(spr);
+    Game.ME.scroller.add(spr, Const.DP_FX_BG);
+
     frict=Const.BREAD_FRICT;
     yr=0.8;
     var fx = (cx+0.5)*Const.GRID;
@@ -26,8 +29,14 @@ class Breadcrumbs extends Entity {
     dx = (tx-fx)/norm * Const.BREAD_SPEED;
     dy = (ty-fy)/norm * Const.BREAD_SPEED;
 
-    //JSTOLAREK: ustawić właściwą animację
-    spr.anim.registerStateAnim("hit", 1, 1, function() { return true; } );
-    spr.colorize(0xB00000);
+    spr.anim.playAndLoop("bread-flying");
   }
+
+    override function fixedUpdate() {
+        super.fixedUpdate();
+
+        if (dx == 0 && dy == 0) {
+            spr.anim.play("bread-spilling").chainLoop("bread-spilled");
+        }
+    }
 }

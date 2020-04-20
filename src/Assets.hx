@@ -33,5 +33,6 @@ class Assets {
 
         tiles = dn.heaps.assets.Atlas.load("atlas/tiles.atlas");
         tiles.defineAnim("title", "0(120), 1-16(5)");
+        tiles.defineAnim("bread-spilling", "0-3(3)");
     }
 }
