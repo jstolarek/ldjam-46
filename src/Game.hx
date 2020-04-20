@@ -40,6 +40,7 @@ class Game extends Process {
 
 		var oe = level.getEntities("hero")[0];
         hero = new en.Hero(oe.cx, oe.cy);
+        en.Breadcrumbs.limit = Const.BREAD_LIMIT;
         #if (slingshot)
         slingshot = new en.Slingshot(Std.int(hero.xr), Std.int(hero.yr));
         slingshot.setHero(hero);

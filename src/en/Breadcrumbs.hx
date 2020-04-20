@@ -2,7 +2,7 @@ package en;
 
 class Breadcrumbs extends Entity {
   public static var ME : Null<Breadcrumbs> = null;
-  static var limit = Const.BREAD_LIMIT;
+  public static var limit = Const.BREAD_LIMIT;
 
   static public function throwBread(cx, cy, tx, ty) {
     if ( ME == null && limit > 0 ) {

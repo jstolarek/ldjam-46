@@ -2,7 +2,7 @@ package en;
 
 enum Job {
     Idle;
-    Follow(e:Hero);
+    Follow(e:Entity);
     Die;
 }
 
@@ -43,10 +43,21 @@ class Pigeon extends Entity {
 
         switch (job) {
             case Follow(e):
-                if (e.destroyed) {
-                    startJob(Idle, 999);
+                if (e.is(Hero)) {
+                    if (e.destroyed) {
+                        startJob(Idle, 999);
+                    } else {
+                        setTarget(e.cx,e.cy);
+                        if (Breadcrumbs.ME != null) {
+                            startJob(Follow(Breadcrumbs.ME), 999);
+                        }
+                    }
                 } else {
-                    setTarget(e.cx,e.cy);
+                    if (e.destroyed) {
+                        startJob(Follow(hero), 999);
+                    } else {
+                        setTarget(e.cx,e.cy);
+                    }
                 }
             default:
         }
@@ -86,9 +97,12 @@ class Pigeon extends Entity {
         if (e.is(Hero)) {
             switch (job) {
                 case Follow(e):
-                    e.hit(Const.PIGEON_STRENGTH);
-                    startJob(Idle, rnd(1.2, 2));
-                    Assets.sfx.peck().play(false, 0.4);
+                    if (e.is(Hero)) {
+                        var h = cast(e, Hero);
+                        h.hit(Const.PIGEON_STRENGTH);
+                        startJob(Idle, rnd(1.2, 2));
+                        Assets.sfx.peck().play(false, 0.4);
+                    }
                 default:
             }
         } else if (e.is(Stone)) {
