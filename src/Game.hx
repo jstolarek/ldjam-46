@@ -11,8 +11,8 @@ class Game extends Process {
     public var hud : ui.Hud;
 	var camFocuses : Map<String,CPoint> = new Map();
 	public var hero : en.Hero;
+    public var crosshair : en.Crosshair;
     public var spawner : en.Spawner;
-    public var pigeon : en.Pigeon;
     #if (slingshot)
     public var slingshot : en.Slingshot;
     #end
@@ -60,8 +60,12 @@ class Game extends Process {
         mouseTrap = new h2d.Interactive(w(),h(),Main.ME.root);
         mouseTrap.onMove  = onMouseMove;
         mouseTrap.onClick = onMouseClick;
-        mouse = {x : 0, y : 0};
+        var m = getMouse();
+        mouse = {x : m.x, y : m.y};
         mouseTrap.cursor = Custom(new hxd.Cursor.CustomCursor([Assets.cursorBitmap],10,0,0));
+
+        //JSTOLAREK: FIXME
+        //crosshair = new en.Crosshair(hero,mouse.x, mouse.y);
     }
 
 	override public function onResize() {
@@ -140,14 +144,15 @@ class Game extends Process {
 
     override function fixedUpdate() {
         super.fixedUpdate();
-        
+
         for(e in Entity.ALL) if( !e.destroyed ) e.fixedUpdate();
     }
 
     override function update() {
         super.update();
+        // JSTOLAREK: fixme
+        // crosshair.setCords(hero,mouse.x,mouse.y);
 
-        
         for(e in Entity.ALL) if( !e.destroyed ) e.update();
         if( !ui.Console.ME.isActive() && !ui.Modal.hasAny() ) {
             #if hl
@@ -180,4 +185,3 @@ class Game extends Process {
 		}
 	}
 }
-
