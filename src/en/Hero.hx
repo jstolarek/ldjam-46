@@ -35,17 +35,17 @@ class Hero extends Entity {
     this.health = Const.HEALTH;
     acc = Const.SPEED;
 
-    spr.anim.registerStateAnim("skull", 1, 0.8, function() return isDead() );
-    spr.anim.registerStateAnim("hero-walk-up", 2, 0.4, function() return isWalk() && direction == UP );
-    spr.anim.registerStateAnim("hero-walk-diagonal-top-right", 2, 0.4, function() return isWalk() && (direction == UP_RIGHT || direction == UP_LEFT ));
-    spr.anim.registerStateAnim("hero-walk-right", 2, 0.4, function() return isWalk() && (direction == RIGHT || direction == LEFT ));
-    spr.anim.registerStateAnim("hero-walk-diagonal-down-right", 2, 0.4, function() return isWalk() && (direction == DOWN_RIGHT || direction == DOWN_LEFT ));
-    spr.anim.registerStateAnim("hero-walk-down", 2, 0.4, function() return isWalk() && direction == DOWN );    
-    spr.anim.registerStateAnim("hero-idle", 1, 0.1, function() return isIdle() );
+    spr.anim.registerStateAnim("hero-walk-up", 3, 0.4, function() return isWalk() && direction == UP );
+    spr.anim.registerStateAnim("hero-walk-diagonal-top-right", 3, 0.4, function() return isWalk() && (direction == UP_RIGHT || direction == UP_LEFT ));
+    spr.anim.registerStateAnim("hero-walk-right", 3, 0.4, function() return isWalk() && (direction == RIGHT || direction == LEFT ));
+    spr.anim.registerStateAnim("hero-walk-diagonal-down-right", 3, 0.4, function() return isWalk() && (direction == DOWN_RIGHT || direction == DOWN_LEFT ));
+    spr.anim.registerStateAnim("hero-walk-down", 3, 0.4, function() return isWalk() && direction == DOWN );
+    spr.anim.registerStateAnim("hero-idle", 2, 0.1, function() return isIdle() );
+    spr.anim.registerStateAnim("skull", 1, 0.2, function() return isDead() );
   }
 
   inline function isIdle() {
-    return state == IDLE;
+    return state == IDLE && !isDead();
   }
 
   inline function isDead() {
@@ -53,12 +53,15 @@ class Hero extends Entity {
   }
 
   inline function isWalk() {
-    return state == WALK;
+    return state == WALK && !isDead();
   }
 
   public function hit(dmg:Int) {
       health -= dmg;
-      if (isDead()) { Main.ME.transition(Game.ME, function() new Outro()); }
+      if (isDead()) {
+      Main.ME.delayer.addF( function() {
+        Main.ME.transition(Game.ME, function() new Outro());
+        }, 40); }
   }
 
   override function dispose() { // call on garbage collection
@@ -78,40 +81,40 @@ class Hero extends Entity {
         }
         state = WALK;
       }
-  
+
       if (! (centerX>=Const.GRID/2)){ dx = 0; cx = 0; xr = 0.5; }
-  
+
       if( ca.dpadRightDown() ) {
         if ( centerX <= (level.wid - 0.5) * Const.GRID ) {
           dx += acc;
         }
         state = WALK;
       }
-  
+
       if ( ! (centerX <= (level.wid - 0.5) * Const.GRID) ) {
         dx = 0; cx = level.wid-1; xr = 0.5;
       }
-  
+
       if( ca.dpadUpDown() ) {
         if (headY >= 0) {
           dy -= acc;
         }
         state = WALK;
       }
-  
+
       if (! (headY >= 0)) { dy = 0; cy = 0; yr = 1;}
-  
+
       if( ca.dpadDownDown() ) {
         if (footY <= level.hei * Const.GRID) {
           dy += acc;
         }
         state = WALK;
       }
-  
+
       if (! (footY <= level.hei * Const.GRID)) { dy = 0; cy = level.hei-1; yr = 1; }
-  
+
       var angle = M.angTo(Game.ME.hero.centerX, Game.ME.hero.centerY, Game.ME.mouse.x, Game.ME.mouse.y );
-  
+
       if (angle > -M.PI/8 && angle <= M.PI/8 ) {
         direction = RIGHT;
         set_dir(1);
@@ -135,7 +138,7 @@ class Hero extends Entity {
         direction = DOWN_LEFT;
         set_dir(-1);
       }
-  
+
        if( xr>0.7 && level.hasCollision(cx+1,cy) ) {
          xr = 0.7;
          if (dx > 0) {
@@ -158,7 +161,7 @@ class Hero extends Entity {
            dx/=4;
          }
        }
-  
+
        if( yr>0.95 && level.hasCollision(cx,cy+1) ) {
          yr = 0.95;
          if (dy > 0) {
