@@ -1,9 +1,14 @@
 import hxd.Key;
 
 class Intro extends dn.Process {
+    public var scroller : h2d.Layers;
+
 	public function new() {
 		super(Main.ME);
 		createRoot(Main.ME.root);
+
+        scroller = new h2d.Layers();
+        root.add(scroller, Const.DP_BG);
 
         var wid = Const.WID;
         var hei = Const.HEI;
