@@ -86,11 +86,15 @@ class Entity {
         yr = (y-cy*Const.GRID)/Const.GRID;
     }
 
-    public function movePosPixel(dx:Float, dy:Float) {
+    public function getPosPixel() {
         var x = (cx + xr) * Const.GRID;
         var y = (cy + yr) * Const.GRID;
+        return {x: x, y: y};
+    }
 
-        setPosPixel(x + dx, y + dy);
+    public function movePosPixel(dx:Float, dy:Float) {
+        var pos = getPosPixel();
+        setPosPixel(pos.x + dx, pos.y + dy);
     }
 
     public function bump(x:Float,y:Float) {
