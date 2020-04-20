@@ -22,13 +22,11 @@ class Hero extends Entity {
   var direction : Direction;
   var state : State;
   var acc : Float;
-  var kol : Int;
   public var health : Int;
 
   public function new(x,y) {
     super(x,y);
 
-    kol = 0;
     acc = 0;
 
     this.ca = Main.ME.controller.createAccess("hero");

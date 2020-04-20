@@ -4,42 +4,50 @@ class Hud extends dn.Process {
     public var game(get,never) : Game; inline function get_game() return Game.ME;
     public var level(get,never) : Level; inline function get_level() return Game.ME.level;
 
-    var flow : h2d.Flow;
-    var invalidated = true;
+    var tf : h2d.Text;
+    var full_bar : h2d.Bitmap;
+    var breads : Array<h2d.Bitmap>;
 
     public function new() {
         super(Game.ME);
 
         createRootInLayers(game.root, Const.DP_UI);
 
-        flow = new h2d.Flow(root);
-		var tf = new h2d.Text(Assets.fontSmall,root);
+        full_bar  = new h2d.Bitmap(Assets.tiles.getTile("hud-full"), root);
+        full_bar.x = 3;
+        full_bar.y = 3;
+
+        breads = new Array<h2d.Bitmap>();
+
+        for (i in 0...3) {
+            breads[i] = new h2d.Bitmap(Assets.tiles.getTile("bread_icon"), root);
+            breads[i].x = 85 + 18*i;
+            breads[i].y = 3;
+        }
+
+		tf = new h2d.Text(Assets.fontSmall,root);
 		tf.x = 5;
-		tf.y = 1;
-		createChildProcess(function(_) {
-            #if (!debug)
-              tf.text = "Health: "+ Game.ME.hero.health + "   Bread: " + en.Breadcrumbs.limit  + "\nScore: " + Game.ME.score;
-            #else
-              tf.text = "Health: "+ Game.ME.hero.health + "   Bread: " + en.Breadcrumbs.limit  + "\nScore: " + Game.ME.score+ "\nFPS: " + Std.string(pretty(hxd.Timer.fps())) +
-                "\nMouse X: " + Game.ME.mouse.x + ", mouse Y: " + Game.ME.mouse.y;
-            #end
-		});
+		tf.y = 20;
     }
 
     override function onDispose() {
         super.onDispose();
     }
 
-    public inline function invalidate() invalidated = true;
+    override function update() {
+      var life = Std.int(Math.ceil((100 - Game.ME.hero.health) * 72 / 100));
+      var empty_bar = new h2d.Bitmap(h2d.Tile.fromColor(0x49475B, life, 6), root);
+      empty_bar.x = 7+72-life;
+      empty_bar.y = 8;
 
-    function render() {}
+      for (i in en.Breadcrumbs.limit...Const.BREAD_LIMIT) {
+        breads[i].visible = false;
+      }
 
-    override function postUpdate() {
-        super.postUpdate();
-
-        if( invalidated ) {
-            invalidated = false;
-            render();
-        }
+#if (!debug)
+      tf.text = "Score: " + Game.ME.score;
+#else
+      tf.text = "Score: " + Game.ME.score+ "\nFPS: " + Std.string(pretty(hxd.Timer.fps()));
+#end
     }
 }
