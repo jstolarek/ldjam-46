@@ -16,7 +16,6 @@ class Pigeon extends Entity {
 
     public function new(x,y) {
         super(x,y);
-        ALL.push(this);
 
         var angWithinDeviation = function(cang:Float, tang:Float, deviation:Float) {
             return cang >= (tang - deviation)
