@@ -59,7 +59,7 @@ class Hero extends Entity {
   public function hit(dmg:Int) {
       health -= dmg;
       Game.ME.camera.shakeS(0.5);
-      if (isDead()) {
+      if ( isDead() ) {
       Main.ME.delayer.addF( function() {
         Main.ME.transition(Game.ME, function() new Outro());
         }, 40); }
@@ -191,7 +191,7 @@ class Hero extends Entity {
 
     override function hasCircCollWith(e:Entity) {
         if( e.destroyed ) return false;
-        if( e.is(Pigeon) ) return true;
+        if( e.is(Pigeon) && !isDead() ) return true;
         return false;
     }
 }
