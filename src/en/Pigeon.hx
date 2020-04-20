@@ -102,8 +102,6 @@ class Pigeon extends Entity {
                         h.hit(Const.PIGEON_STRENGTH);
                         startJob(Idle, rnd(1.2, 2));
                         Assets.sfx.peck().play(false, 0.4);
-                        game.tw.createS(spr.color.g, 0.0>1, 1);
-                        game.tw.createS(spr.color.b, 0.0>1, 1);
                     }
                 default:
             }
