@@ -45,8 +45,6 @@ class Game extends Process {
         spawner = new en.Spawner();
 
         hero.setPosCase(oe.cx, oe.cy);
-        trace(oe.cx);
-        trace(oe.cy);
 
         slingshot.setPosCase(oe.cx, oe.cy);
 		for(oe in level.getEntities("camFocus")) {
