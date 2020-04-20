@@ -3,8 +3,8 @@ class Const {
     public static var FIXED_FPS = 30;
     public static var WID = 512;
     public static var HEI = 288;
-    public static var AUTO_SCALE_TARGET_WID = 512; // -1 to disable auto-scaling on width
-    public static var AUTO_SCALE_TARGET_HEI = 288; // -1 to disable auto-scaling on height
+    public static var AUTO_SCALE_TARGET_WID = -1; // -1 to disable auto-scaling on width
+    public static var AUTO_SCALE_TARGET_HEI = -1; // -1 to disable auto-scaling on height
 #if (hl)
     public static var SCALE = 3.75; // ignored if auto-scaling
 #elseif (js)
@@ -36,6 +36,7 @@ class Const {
     public static var BREAD_FRICT = 0.8;
     public static var BREAD_LIMIT = 3;
     public static var MAX_STONES = 100;
+    public static var MAX_BLOOD = 100;
     public static var STONE_COOLDOWN = 250; //ms
     public static var PIGEON_STRENGTH = 10;
     public static var PIGEON_SCORE = 10;
