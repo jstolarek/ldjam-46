@@ -2,10 +2,12 @@ package en;
 
 class Breadcrumbs extends Entity {
   public static var ME : Null<Breadcrumbs> = null;
+  static var limit = Const.BREAD_LIMIT;
 
   static public function throwBread(cx, cy, tx, ty) {
-    if ( ME == null ) {
+    if ( ME == null && limit > 0 ) {
       ME = new Breadcrumbs(cx,cy, tx, ty);
+      limit--;
       Game.ME.delayer.addS( function() {
         ME.destroy();
         ME = null;
@@ -24,6 +26,8 @@ class Breadcrumbs extends Entity {
     dx = (tx-fx)/norm * Const.BREAD_SPEED;
     dy = (ty-fy)/norm * Const.BREAD_SPEED;
 
-    spr.anim.registerStateAnim("hit", 1, 0.1, function() return true );
+    //JSTOLAREK: ustawić właściwą animację
+    spr.anim.registerStateAnim("hit", 1, 1, function() { return true; } );
+    spr.colorize(0xB00000);
   }
 }
