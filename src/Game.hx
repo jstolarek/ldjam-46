@@ -85,9 +85,13 @@ class Game extends Process {
 	}
 
     function onMouseClick(ev:hxd.Event) {
-      if (!cd.hasSetMs("stone", Const.STONE_COOLDOWN)) {
-		var m = getMouse();
-        new en.Stone(hero.cx, hero.cy, mouse.x, mouse.y);
+      var m = getMouse();
+      if (ev.button == 0) {
+        if (!cd.hasSetMs("stone", Const.STONE_COOLDOWN)) {
+          new en.Stone(hero.cx, hero.cy, mouse.x, mouse.y);
+        }
+      } else if (ev.button == 1) {
+        en.Breadcrumbs.throwBread(hero.cx, hero.cy, mouse.x, mouse.y);
       }
     }
 
