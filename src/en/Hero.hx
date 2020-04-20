@@ -35,6 +35,7 @@ class Hero extends Entity {
     this.direction = RIGHT;
     this.health = Const.HEALTH;
 
+    state = IDLE;
     spr.anim.registerStateAnim("hero-walk-up", 3, 0.4, function() return isWalk() && direction == UP );
     spr.anim.registerStateAnim("hero-walk-diagonal-top-right", 3, 0.4, function() return isWalk() && (direction == UP_RIGHT || direction == UP_LEFT ));
     spr.anim.registerStateAnim("hero-walk-right", 3, 0.4, function() return isWalk() && (direction == RIGHT || direction == LEFT ));
