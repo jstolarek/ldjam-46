@@ -49,8 +49,10 @@ class Pigeon extends Entity {
             var a = Math.atan2((target.cy+0.5)-(cy+yr), (target.cx+0.5)-(cx+xr));
             dx += Math.cos(a)*spd;
             dy += Math.sin(a)*spd;
-            dir = Math.cos(a)>=0.1 ? 1 : Math.cos(a)<=-0.1 ? -1 : dir;
-            dir *= -1;
+            if (!cd.hasSetS("flipX", 0.5)) {
+              dir = Math.cos(a)>=0.2 ? 1 : Math.cos(a)<=-0.2 ? -1 : dir;
+              dir *= -1;
+            }
         }
 
         var doingIt = switch( job ) {
