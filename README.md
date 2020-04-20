@@ -1,11 +1,61 @@
-Ludum Dare 46
+Just a Stroll
 =============
 
-  * Inicjalizacja bibliotek po sklonowaniu: `./init.sh`
-  * Budowanie wersji SDL (Linux): `haxe hx.sdl.hxml`
-  * Budowanie wersji DirectX (Windows): `haxe hx.dx.hxml`
-  * Budowanie wersji JavaScript (przeglądarka): `haxe js.hxml`
-  * Uruchamianie wersji standalone (Windows/Linux): `hl bin/client.hl`
-  * Uruchamianie wersji przeglądarkowej: otworzyć `js.html` w przeglądarce
+A [Ludum Dare 46 entry].  Theme: keep it alive.
 
-[Instrukcja publikcji na itch.io](https://itch.io/docs/creators/getting-started)
+
+Controls
+========
+
+  * MOVE: W/A/S/D or Arrows or D-Pad
+  * Aiming: mouse
+  * Throw stones: left mouse button
+  * Throw bread: right mouse button
+  * Exit: press Esc twice
+
+
+Scoring
+=======
+
+10 points per bird multiplied by accuracy.  Yes, you will use points if you
+throw stones that miss.  It's better to throw less stones but accurately.
+
+
+Building from source
+====================
+
+Written in [Haxe](https://haxe.org/) using [heaps.io](https://heaps.io/) engine
+and [deepnightLibs](https://github.com/deepnight/deepnightLibs) library, with
+[gameBase](https://github.com/deepnight/gameBase) as a starting point.  To
+compile and run the game you need a working installation of Haxe 4.x and
+[Hashlink](https://hashlink.haxe.org).  Required libraries are included as
+submodules in the repo.  If you're on Linux you run `./init.sh` script after
+checkout.  It will update the submodules, create a local `haxelib` sandbox, and
+install the required libraries into the sandbox.  Alternatively you can do this
+manually by running the following command to clone submodules:
+
+```
+git submodule init
+git submodule update
+```
+
+and then install the required libraries in a local sandbox with:
+
+```
+haxelib newrepo
+haxelib git heaps heaps/
+haxelib git deepnightLibs deepnightLibs/
+haxelib git castle castle/
+haxelib git heapsOgmo heapsOgmo/
+
+haxelib install hlsdl
+```
+
+The following build targets are available:
+
+  * SDL (Linux): compile with `haxe hx.sdl.hxml`
+  * DirectX (Windows): compile with `haxe hx.dx.hxml`
+  * JavaScript (any modern web browser): compile with `haxe js.hxml`
+
+To run the SDL or DirectX build use `hl bin/client.hl`.  To run the JavaScript
+build open `index.html` in a web browser.
