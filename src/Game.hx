@@ -61,6 +61,7 @@ class Game extends Process {
         mouseTrap = new h2d.Interactive(w(),h(),Main.ME.root);
         mouseTrap.onMove  = onMouseMove;
         mouseTrap.onClick = onMouseClick;
+        mouseTrap.enableRightButton = true;
         var m = getMouse();
         mouse = {x : m.x, y : m.y};
         mouseTrap.cursor = Custom(new hxd.Cursor.CustomCursor([Assets.cursorBitmap],10,0,0));
@@ -87,12 +88,11 @@ class Game extends Process {
 
     function onMouseClick(ev:hxd.Event) {
       var m = getMouse();
-      //TODO(JSTOLAREK): ustawić lewy i prawy przycisk poprawnie
-      if (ev.button == 1) {
+      if (ev.button == 0) {
         if (!cd.hasSetMs("stone", Const.STONE_COOLDOWN)) {
           new en.Stone(hero.cx, hero.cy, mouse.x, mouse.y);
         }
-      } else if (ev.button == 0) {
+      } else if (ev.button == 1) {
         en.Breadcrumbs.throwBread(hero.cx, hero.cy, mouse.x, mouse.y);
       }
     }
