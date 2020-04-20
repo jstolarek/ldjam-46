@@ -2,22 +2,23 @@ package en;
 
 class Spawner extends Entity {
 
-    var interv = 10.0;
-    var intervMult = 0.5;
+    var interv = 5.0;
+    var intervMult = 0.95;
 
     public function new() {
-        super(0, 0);
+        super(-1, -1);
+        spawn(5);
     }
 
     public override function update() {
         if (!cd.hasSetS("spawn", interv)) {
-            spawn();
+            spawn(5);
             interv *= intervMult;
-            intervMult += (1 - intervMult) * 0.5;
         }
     }
 
-    function spawn() {
+    function spawn(t : Int) {
+      for (i in 1...t) {
         var cx = 0;
         var cy = 0;
 
@@ -48,6 +49,7 @@ class Spawner extends Entity {
         }
 
         new en.Pigeon(cx, cy);
+      }
     }
 
 }
