@@ -66,8 +66,7 @@ class Game extends Process {
         mouse = {x : m.x, y : m.y};
         mouseTrap.cursor = Custom(new hxd.Cursor.CustomCursor([Assets.cursorBitmap],10,0,0));
 
-        //JSTOLAREK: FIXME
-        //crosshair = new en.Crosshair(hero,mouse.x, mouse.y);
+        crosshair = new en.Crosshair(hero,mouse.x, mouse.y);
     }
 
 	override public function onResize() {
@@ -156,8 +155,7 @@ class Game extends Process {
 
     override function update() {
         super.update();
-        // JSTOLAREK: fixme
-        // crosshair.setCords(hero,mouse.x,mouse.y);
+        crosshair.setCords(hero,mouse.x,mouse.y);
 
         for(e in Entity.ALL) if( !e.destroyed ) e.update();
         if( !ui.Console.ME.isActive() && !ui.Modal.hasAny() ) {
