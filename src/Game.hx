@@ -11,7 +11,6 @@ class Game extends Process {
     public var hud : ui.Hud;
 	var camFocuses : Map<String,CPoint> = new Map();
 	public var hero : en.Hero;
-    public var crosshair : en.Crosshair;
     public var spawner : en.Spawner;
     #if (slingshot)
     public var slingshot : en.Slingshot;
@@ -66,8 +65,6 @@ class Game extends Process {
         var m = getMouse();
         mouse = {x : m.x, y : m.y};
         mouseTrap.cursor = Custom(new hxd.Cursor.CustomCursor([Assets.cursorBitmap],10,0,0));
-
-        crosshair = new en.Crosshair(hero,mouse.x, mouse.y);
     }
 
 	override public function onResize() {
@@ -156,7 +153,6 @@ class Game extends Process {
 
     override function update() {
         super.update();
-        crosshair.setCords(hero,mouse.x,mouse.y);
 
         for(e in Entity.ALL) if( !e.destroyed ) e.update();
         if( !ui.Console.ME.isActive() && !ui.Modal.hasAny() ) {
