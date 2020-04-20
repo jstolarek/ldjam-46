@@ -11,12 +11,9 @@ class Game extends Process {
     public var hud : ui.Hud;
 	var camFocuses : Map<String,CPoint> = new Map();
 	public var hero : en.Hero;
-<<<<<<< HEAD
     public var spawner : en.Spawner;
-=======
     public var pigeon : en.Pigeon;
     public var slingshot : en.Slingshot;
->>>>>>> 3c778b7... Add slingshot
     var mouseTrap : h2d.Interactive;
     public var mouse : { x:Int, y:Int }
     public var score : Int;
