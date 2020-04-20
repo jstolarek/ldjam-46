@@ -5,7 +5,7 @@ class Const {
     public static var HEI = 288;
     public static var AUTO_SCALE_TARGET_WID = 512; // -1 to disable auto-scaling on width
     public static var AUTO_SCALE_TARGET_HEI = 288; // -1 to disable auto-scaling on height
-#if (hl)
+#if (hl || cpp)
     public static var SCALE = 3.75; // ignored if auto-scaling
 #elseif (js)
     public static var SCALE = 2; // ignored if auto-scaling
