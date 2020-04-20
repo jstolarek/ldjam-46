@@ -13,7 +13,9 @@ class Game extends Process {
 	public var hero : en.Hero;
     public var spawner : en.Spawner;
     public var pigeon : en.Pigeon;
+    #if (slingshot)
     public var slingshot : en.Slingshot;
+    #end
     var mouseTrap : h2d.Interactive;
     public var mouse : { x:Int, y:Int }
     public var score : Int;
@@ -38,15 +40,19 @@ class Game extends Process {
 
 		var oe = level.getEntities("hero")[0];
         hero = new en.Hero(oe.cx, oe.cy);
+        #if (slingshot)
         slingshot = new en.Slingshot(Std.int(hero.xr), Std.int(hero.yr));
         slingshot.setHero(hero);
+        #end
         pigeon = new en.Pigeon(5,5);
         score = 0;
         spawner = new en.Spawner();
 
         hero.setPosCase(oe.cx, oe.cy);
 
+        #if (slingshot)
         slingshot.setPosCase(oe.cx, oe.cy);
+        #end
 		for(oe in level.getEntities("camFocus")) {
 			camFocuses.set(oe.getStr("id"), new CPoint(oe.cx,oe.cy));
         }
