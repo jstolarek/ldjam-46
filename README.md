@@ -59,8 +59,8 @@ haxelib install hlsdl
 
 The following build targets are available:
 
-  * SDL (Linux): compile with `haxe hx.sdl.hxml`
-  * DirectX (Windows): compile with `haxe hx.dx.hxml`
+  * SDL (Linux): compile with `haxe hl.sdl.hxml`
+  * DirectX (Windows): compile with `haxe hl.dx.hxml`
   * JavaScript (any modern web browser): compile with `haxe js.hxml`
 
 To run the SDL or DirectX build use `hl bin/client.hl`.  To run the JavaScript
