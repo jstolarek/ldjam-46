@@ -110,7 +110,9 @@ class Pigeon extends Entity {
             startJob(Die, 1);
             // HACK: Adjust for "pioorka" animation, which has bad pivot.
             spr.setPivotCoord(35 * 0.5, 77 * (0.5 + 0.1));
-            new Blood(cx, cy, xr, yr);
+            if (!Game.ME.level.hasWallCollision(cx, cy) && !Game.ME.level.hasRockCollision(cx, cy)) {
+                new Blood(cx, cy, xr, yr);
+            }
             Assets.sfx.hit().play(false, 0.4);
         }
     }
