@@ -34,8 +34,8 @@ class Spawner extends Entity {
             var nn = n;
             cx = nn % Game.ME.level.wid;
             cy = nn < Game.ME.level.wid ? -1 : Game.ME.level.hei + 1;
-        } else if (n < Game.ME.level.hei * 2) {
-            var nn = n - Game.ME.level.wid * 2;
+        } else if (n < Game.ME.level.wid * 2 + Game.ME.level.hei * 2) {
+            var nn = n - Game.ME.level.wid * 2 + Game.ME.level.hei * 2;
             cx = nn < Game.ME.level.hei ? -1 : Game.ME.level.wid + 1;
             cy = nn % Game.ME.level.hei;
         } else {
@@ -48,6 +48,7 @@ class Spawner extends Entity {
             }
         }
 
+        // trace("cx: " + cx + ", cy: " + cy);
         new en.Pigeon(cx, cy);
       }
     }
