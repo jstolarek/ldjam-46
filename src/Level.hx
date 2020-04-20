@@ -1,3 +1,21 @@
+@:enum
+abstract Collision(Int) {
+  var NONE  = 0;
+  var WALL  = 1;
+  var ROCKS = 2;
+
+  public inline function new( v : Int ){
+    this = v;
+  }
+
+  public inline function getIndex() : Int {
+    return this;
+  }
+
+  inline public static var LENGTH = 3;
+}
+
+
 class Level extends dn.Process {
     public var game(get,never) : Game; inline function get_game() return Game.ME;
 
@@ -8,7 +26,7 @@ class Level extends dn.Process {
 	var data : ogmo.Level;
 
     var invalidated = true;
-    var collMap : Map<Int,Bool> = new Map();
+    var collMap : Map<Int,Collision> = new Map();
 
     public function new() {
         super(Game.ME);
@@ -22,8 +40,8 @@ class Level extends dn.Process {
         var l = data.getLayerByName("collisions");
         for(cy in 0...l.cHei)
           for(cx in 0...l.cWid)
-            if( l.getIntGrid(cx,cy)==1 )
-              setCollision(cx,cy,true);
+            if( l.getIntGrid(cx,cy)>0 )
+              setCollision(cx,cy,new Collision(l.getIntGrid(cx,cy)));
     }
 
     public inline function isValid(cx,cy) return cx>=0 && cx<wid && cy>=0 && cy<hei;
@@ -32,14 +50,18 @@ class Level extends dn.Process {
 
     public inline function setCollision(cx,cy,v) {
       if( isValid(cx,cy) )
-        if( v )
-          collMap.set( coordId(cx,cy), true );
+        if( v != NONE )
+          collMap.set( coordId(cx,cy), v );
         else
           collMap.remove( coordId(cx,cy) );
     }
 
-    public inline function hasCollision(cx,cy) {
-      return isValid(cx,cy) ? collMap.get(coordId(cx,cy))==true : true;
+    public inline function hasWallCollision(cx,cy) {
+      return isValid(cx,cy) ? collMap.get(coordId(cx,cy))==WALL : true;
+    }
+
+    public inline function hasRockCollision(cx,cy) {
+      return isValid(cx,cy) ? collMap.get(coordId(cx,cy))==ROCKS : true;
     }
 
     public function render() {

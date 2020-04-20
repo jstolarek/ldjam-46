@@ -29,11 +29,11 @@ class Hero extends Entity {
     super(x,y);
 
     kol = 0;
+    acc = 0;
 
     this.ca = Main.ME.controller.createAccess("hero");
     this.direction = RIGHT;
     this.health = Const.HEALTH;
-    acc = Const.SPEED;
 
     spr.anim.registerStateAnim("hero-walk-up", 3, 0.4, function() return isWalk() && direction == UP );
     spr.anim.registerStateAnim("hero-walk-diagonal-top-right", 3, 0.4, function() return isWalk() && (direction == UP_RIGHT || direction == UP_LEFT ));
@@ -72,6 +72,12 @@ class Hero extends Entity {
 
   override function fixedUpdate() { // the Entity main loop
     super.update();
+
+    if ( !level.hasRockCollision(cx,cy) ) {
+      acc = Const.SPEED;
+    } else {
+      acc = Const.SPEED * Const.FRICT;
+    }
 
     state = IDLE;
 
@@ -140,47 +146,47 @@ class Hero extends Entity {
         set_dir(-1);
       }
 
-       if( xr>0.7 && level.hasCollision(cx+1,cy) ) {
+       if( xr>0.7 && level.hasWallCollision(cx+1,cy) ) {
          xr = 0.7;
          if (dx > 0) {
            dx/=2;
          }
        }
-       if( xr>=0.6 && level.hasCollision(cx+1,cy) ) {
+       if( xr>=0.6 && level.hasWallCollision(cx+1,cy) ) {
          if ( dx > 0 ) {
            dx/=4;
          }
        }
-       if( xr<0.3 && level.hasCollision(cx-1,cy) ) {
+       if( xr<0.3 && level.hasWallCollision(cx-1,cy) ) {
          xr = 0.3;
          if (dx < 0) {
            dx/=2;
          }
        }
-       if( xr<0.4 && level.hasCollision(cx-1,cy) ) {
+       if( xr<0.4 && level.hasWallCollision(cx-1,cy) ) {
          if (dx < 0) {
            dx/=4;
          }
        }
 
-       if( yr>0.95 && level.hasCollision(cx,cy+1) ) {
+       if( yr>0.95 && level.hasWallCollision(cx,cy+1) ) {
          yr = 0.95;
          if (dy > 0) {
            dy/=2;
          }
        }
-       if( yr>=0.8 && level.hasCollision(cx,cy+1) ) {
+       if( yr>=0.8 && level.hasWallCollision(cx,cy+1) ) {
          if ( dy > 0 ) {
            dy/=4;
          }
        }
-       if( yr<0.3 && level.hasCollision(cx,cy-1) ) {
+       if( yr<0.3 && level.hasWallCollision(cx,cy-1) ) {
          yr = 0.3;
          if (dy < 0) {
            dy/=2;
          }
        }
-       if( yr<0.4 && level.hasCollision(cx,cy-1) ) {
+       if( yr<0.4 && level.hasWallCollision(cx,cy-1) ) {
          if (dy < 0) {
            dy/=4;
          }
