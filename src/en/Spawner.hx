@@ -7,7 +7,6 @@ class Spawner extends Entity {
 
     public function new() {
         super(-1, -1);
-        spawn(5);
     }
 
     public override function update() {
