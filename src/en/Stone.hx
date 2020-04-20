@@ -2,6 +2,7 @@ package en;
 
 class Stone extends Entity {
   static var STONES : Array<Stone> = new Array<Stone>();
+  var useless = false;
 
   public function new(cx, cy, tx, ty) {
     super(cx,cy);
@@ -30,4 +31,15 @@ class Stone extends Entity {
       destroy();
     }
   }
+
+    override function onTouch(e:Entity) {
+        super.onTouch(e);
+        useless = true;
+    }
+
+    override function hasCircCollWith(e:Entity) {
+        if (dx == 0 && dy == 0 || useless) return false;
+        if (e.is(Pigeon)) return true;
+        return false;
+    }
 }
