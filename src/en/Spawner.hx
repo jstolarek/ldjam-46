@@ -48,7 +48,7 @@ class Spawner extends Entity {
         }
 
         // trace("cx: " + cx + ", cy: " + cy);
-        new en.Pigeon(cx, cy);
+        new en.Pigeon(cx, cy, Lib.rnd(0,1), Lib.rnd(0,1));
       }
     }
 

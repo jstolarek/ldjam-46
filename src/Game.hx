@@ -44,7 +44,6 @@ class Game extends Process {
         slingshot = new en.Slingshot(Std.int(hero.xr), Std.int(hero.yr));
         slingshot.setHero(hero);
         #end
-        pigeon = new en.Pigeon(5,5);
         score = 0;
         spawner = new en.Spawner();
 

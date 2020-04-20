@@ -14,8 +14,10 @@ class Pigeon extends Entity {
     var target : Null<CPoint>;
 
 
-    public function new(x,y) {
+    public function new(x,y,xr,yr) {
         super(x,y);
+        this.xr = xr;
+        this.yr = yr;
 
         var angWithinDeviation = function(cang:Float, tang:Float, deviation:Float) {
             return cang >= (tang - deviation)
