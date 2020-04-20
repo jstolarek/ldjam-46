@@ -27,7 +27,7 @@ class Pigeon extends Entity {
         spr.anim.registerStateAnim("golab-side", 1, 0.4, function() return true );
         spr.anim.registerStateAnim("golab-up", 2, 0.4, function() return angWithinDeviation(M.angTo(0,0,dx,dy), -M.PIHALF, M.PI2 * 0.1));
         spr.anim.registerStateAnim("golab-down", 2, 0.4, function() return angWithinDeviation(M.angTo(0,0,dx,dy), M.PIHALF, M.PI2 * 0.1));
-        spr.anim.registerStateAnim("hit", 3, 0.4, function() return isOnJob(Die) );
+        spr.anim.registerStateAnim("pioorka", 3, 0.4, function() return isOnJob(Die) );
         spr.colorMatrix = dn.Color.getColorizeMatrixH2d( dn.Color.makeColorHsl(rnd(0,1), 0.5, 1), rnd(0,0.3));
 
         startJob( Follow(hero), 999 );
@@ -108,6 +108,8 @@ class Pigeon extends Entity {
         } else if (e.is(Stone)) {
             Game.ME.addScore();
             startJob(Die, 1);
+            // HACK: Adjust for "pioorka" animation, which has bad pivot.
+            spr.setPivotCoord(35 * 0.5, 77 * (0.5 + 0.1));
             Assets.sfx.hit().play(false, 0.4);
         }
     }
