@@ -62,6 +62,7 @@ class Game extends Process {
         mouseTrap.onMove  = onMouseMove;
         mouseTrap.onClick = onMouseClick;
         mouseTrap.enableRightButton = true;
+        mouseTrap.propagateEvents = true;
         var m = getMouse();
         mouse = {x : m.x, y : m.y};
         mouseTrap.cursor = Custom(new hxd.Cursor.CustomCursor([Assets.cursorBitmap],10,0,0));
