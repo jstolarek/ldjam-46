@@ -12,6 +12,9 @@ class Game extends Process {
 	var camFocuses : Map<String,CPoint> = new Map();
 	public var hero : en.Hero;
     public var spawner : en.Spawner;
+    var stones_thrown : Int;
+    var kills : Int;
+    var raw_score : Int;
     #if (slingshot)
     public var slingshot : en.Slingshot;
     #end
@@ -45,6 +48,9 @@ class Game extends Process {
         slingshot.setHero(hero);
         #end
         score = 0;
+        raw_score = 0;
+        stones_thrown = 0;
+        kills = 0;
         spawner = new en.Spawner();
 
         hero.setPosCase(oe.cx, oe.cy);
@@ -73,8 +79,16 @@ class Game extends Process {
 		mouseTrap.height = h();
 	}
 
+    function updateScore() {
+      if ( stones_thrown != 0 ) {
+        score = Std.int(raw_score * kills/stones_thrown);
+      }
+    }
+
     public function addScore() {
-      score += Const.PIGEON_SCORE;
+      kills++;
+      raw_score += Const.PIGEON_SCORE;
+      updateScore();
     }
 
 	function onMouseMove(ev:hxd.Event) {
@@ -87,6 +101,8 @@ class Game extends Process {
       var m = getMouse();
       if (ev.button == 0) {
         if (!cd.hasSetMs("stone", Const.STONE_COOLDOWN)) {
+          stones_thrown++;
+          updateScore();
           new en.Stone(hero.cx, hero.cy, mouse.x, mouse.y);
         }
       } else if (ev.button == 1) {
@@ -162,8 +178,8 @@ class Game extends Process {
                 if( !cd.hasSetS("exitWarn",1.5) ) {
                   var tf = new h2d.Text(Assets.fontTiny, root);
                   tf.text = "Press ESCAPE again to quit";
-                  tf.x = Const.AUTO_SCALE_TARGET_WID*0.475 - tf.textWidth*tf.scaleX*0.5;
-                  tf.y = Const.AUTO_SCALE_TARGET_HEI*0.4;
+                  tf.x = Const.WID*0.475 - tf.textWidth*tf.scaleX*0.5;
+                  tf.y = Const.HEI*0.4;
                   tw.createMs(tf.alpha, 50|0>1, 50);
                   delayer.addF( function() { tw.createMs(tf.alpha, 50|1>0, 50);}, 90 );
                 } else {

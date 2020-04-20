@@ -5,23 +5,26 @@ class Outro extends dn.Process {
 		super(Main.ME);
 		createRoot(Main.ME.root);
 
-        var wid = Const.AUTO_SCALE_TARGET_WID;
-        var hei = Const.AUTO_SCALE_TARGET_HEI;
+        var x = Const.WID * 0.5;
+        var hei = Const.HEI;
 
 		var tf = new h2d.Text(Assets.fontLarge, root);
 		tf.text = "GAME OVER";
-		tf.x = wid*0.475 - tf.textWidth*tf.scaleX*0.5;
+		tf.x = x;
 		tf.y = hei*0.35;
+        tf.textAlign = Center;
 
 		var tf = new h2d.Text(Assets.fontMedium, root);
 		tf.text = "Score: " + Game.ME.score;
-		tf.x = wid*0.475 - tf.textWidth*tf.scaleX*0.5;
+		tf.x = x;
 		tf.y = hei*0.55;
+        tf.textAlign = Center;
 
 		var tf = new h2d.Text(Assets.fontTiny, root);
 		tf.text = "Click to play again";
-		tf.x = wid*0.475 - tf.textWidth*tf.scaleX*0.5;
+		tf.x = x;
 		tf.y = hei*0.8;
+        tf.textAlign = Center;
 
 		var i = new h2d.Interactive(w(), h(), root);
 		i.onClick = function(_) {
