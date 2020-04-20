@@ -23,7 +23,7 @@ Controls
 Scoring
 =======
 
-10 points per bird multiplied by accuracy.  Yes, you will use points if you
+10 points per bird multiplied by accuracy.  Yes, you will lose points if you
 throw stones that miss.  It's better to throw less stones but accurately.
 
 
