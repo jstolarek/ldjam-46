@@ -3,11 +3,11 @@ Just a Stroll
 
 A Ludum Dare 46 entry.  Theme: keep it alive.
 
-It was just a stroll in the park until bloodthirsty pigeons starting attacking.
-Now you have to keep yourself alive!  Kill the pigeons by throwing stones.
-Throw them some breadcrumbs to temporarily stop them from following you.  You
-have an unlimited number of stones but only three portions of breadcrumbs.
-Walking over rocks will slow you down, so be careful.
+For It this was just a stroll in the park until bloodthirsty pigeons starting
+attacking him.  Now you have to keep It alive!  Kill the pigeons by throwing
+stones.  Throw them some breadcrumbs to temporarily stop them from following It.
+It has an unlimited number of stones but only three portions of breadcrumbs.
+Walking over rocks will slow It down, so be careful.
 
 
 Controls
