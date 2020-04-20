@@ -19,7 +19,7 @@ class Pigeon extends Entity {
         ALL.push(this);
 
         spr.anim.registerStateAnim("golab-side", 1, 0.4, function() return true );
-        spr.anim.registerStateAnim("pioorka", 2, 0.4, function() return isOnJob(Die) );
+        spr.anim.registerStateAnim("hit", 2, 0.4, function() return isOnJob(Die) );
         spr.colorMatrix = dn.Color.getColorizeMatrixH2d( dn.Color.makeColorHsl(rnd(0,1), 0.5, 1), rnd(0,0.3));
 
         startJob( Follow(hero), 999 );
