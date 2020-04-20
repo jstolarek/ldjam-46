@@ -141,10 +141,16 @@ class Game extends Process {
             #if hl
             // Exit
             if( ca.isKeyboardPressed(Key.ESCAPE) )
-                if( !cd.hasSetS("exitWarn",3) )
-                    trace(Lang.t._("Press ESCAPE again to exit."));
-                else
+                if( !cd.hasSetS("exitWarn",1.5) ) {
+                  var tf = new h2d.Text(Assets.fontTiny, root);
+                  tf.text = "Press ESCAPE again to quit";
+                  tf.x = Const.AUTO_SCALE_TARGET_WID*0.475 - tf.textWidth*tf.scaleX*0.5;
+                  tf.y = Const.AUTO_SCALE_TARGET_HEI*0.4;
+                  tw.createMs(tf.alpha, 50|0>1, 50);
+                  delayer.addF( function() { tw.createMs(tf.alpha, 50|1>0, 50);}, 90 );
+                } else {
                     hxd.System.exit();
+                }
             #end
         }
     }
