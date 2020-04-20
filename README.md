@@ -13,7 +13,7 @@ Walking over rocks will slow It down, so be careful.
 Controls
 ========
 
-  * MOVE: W/A/S/D or Arrows or D-Pad
+  * MOVE: W/A/S/D or Arrows
   * Aiming: mouse
   * Throw stones: left mouse button
   * Throw bread: right mouse button
