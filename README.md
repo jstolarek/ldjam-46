@@ -1,13 +1,16 @@
 Just a Stroll
 =============
 
-A Ludum Dare 46 entry.  Theme: keep it alive.
+Source code for a Ludum Dare 46 entry.  Theme: *"keep it alive"*.  [Official
+submission page](https://ldjam.com/events/ludum-dare/46/just-a-stroll),
+[itch.io](https://killy9999.itch.io/just-a-stroll) (contains an embedded HTML5
+version as well as a Linux build).
 
-For It this was just a stroll in the park until bloodthirsty pigeons starting
+*For It this was just a stroll in the park until bloodthirsty pigeons starting
 attacking him.  Now you have to keep It alive!  Kill the pigeons by throwing
 stones.  Throw them some breadcrumbs to temporarily stop them from following It.
 It has an unlimited number of stones but only three portions of breadcrumbs.
-Walking over rocks will slow It down, so be careful.
+Walking over rocks will slow It down, so be careful.*
 
 
 Controls
@@ -59,12 +62,11 @@ haxelib install hlsdl
 
 The following build targets are available:
 
-  * SDL (Linux): compile with `haxe hl.sdl.hxml`
-  * DirectX (Windows): compile with `haxe hl.dx.hxml`
-  * JavaScript (any modern web browser): compile with `haxe js.hxml`
-
-To run the SDL or DirectX build use `hl bin/stroll.hl`.  To run the JavaScript
-build open `index.html` in a web browser.
+  * SDL (Linux, hashlink vm): compile with `haxe hl.sdl.hxml`, run with `hl bin/stroll.hl`
+  * SDL (Linux, native): compile with `./build.sh`, run with `./bin/stroll`
+  * DirectX (Windows, haslink vm): compile with `haxe hl.dx.hxml`, run with `hl bin/stroll.hl`
+  * JavaScript (any modern web browser): compile with `haxe js.hxml`, run by
+    opening `index.html` in a web browser.
 
 
 Screenshots
