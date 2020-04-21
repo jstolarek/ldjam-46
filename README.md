@@ -3,7 +3,7 @@ Just a Stroll
 
 Source code for a Ludum Dare 46 entry.
 
-Theme: *"keep it alive"*.
+Theme: *keep it alive*.
 
 [Official submission](https://ldjam.com/events/ludum-dare/46/just-a-stroll) +
 [itch.io](https://killy9999.itch.io/just-a-stroll) (contains an embedded HTML5
@@ -23,7 +23,7 @@ Controls
   * Aiming: mouse
   * Throw stones: left mouse button
   * Throw bread: right mouse button
-  * Exit: press Esc twice
+  * Quit: press Esc twice
 
 
 Scoring
