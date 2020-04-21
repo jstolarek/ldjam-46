@@ -9,8 +9,6 @@ stones.  Throw them some breadcrumbs to temporarily stop them from following It.
 It has an unlimited number of stones but only three portions of breadcrumbs.
 Walking over rocks will slow It down, so be careful.
 
-![gameplay_preview_1](screenshots/just_a_stroll_gameplay_1.jpg)
-
 
 Controls
 ========
@@ -69,9 +67,26 @@ To run the SDL or DirectX build use `hl bin/client.hl`.  To run the JavaScript
 build open `index.html` in a web browser.
 
 
+Screenshots
+===========
+
+![gameplay_preview_1](screenshots/just_a_stroll_title.jpg)
+
+![gameplay_preview_1](screenshots/just_a_stroll_gameplay_1.jpg)
+
+![gameplay_preview_1](screenshots/just_a_stroll_gameplay_2.jpg)
+
+![gameplay_preview_1](screenshots/just_a_stroll_gameplay_3.jpg)
+
+![gameplay_preview_1](screenshots/just_a_stroll_gameplay_4.jpg)
+
+
 Credits
 =======
 
-  * Programming: @jstolarek, @silnar, @spacePotato
-  * Graphics: @spacePotato, @waev
-  * Sound: @waev
+  * Programming: [@killy9999](https://ldjam.com/users/killy9999),
+    [@silnar](https://ldjam.com/users/silnar),
+    [@spacePotato](https://ldjam.com/users/spacePotato)
+  * Graphics: [@spacePotato](https://ldjam.com/users/spacePotato),
+    [@waev](https://ldjam.com/users/waev)
+  * Sound: [@waev](https://ldjam.com/users/waev)
