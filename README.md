@@ -9,6 +9,8 @@ Theme: *keep it alive*.
 [itch.io](https://killy9999.itch.io/just-a-stroll) (contains an embedded HTML5
 version as well as a Linux build).
 
+![gameplay_preview_1](screenshots/just_a_stroll_gameplay_2.jpg)
+
 *For It this was just a stroll in the park until bloodthirsty pigeons starting
 attacking him.  Now you have to keep It alive!  Kill the pigeons by throwing
 stones.  Throw them some breadcrumbs to temporarily stop them from following It.
@@ -78,8 +80,6 @@ Screenshots
 ![gameplay_preview_1](screenshots/just_a_stroll_title.jpg)
 
 ![gameplay_preview_1](screenshots/just_a_stroll_gameplay_1.jpg)
-
-![gameplay_preview_1](screenshots/just_a_stroll_gameplay_2.jpg)
 
 ![gameplay_preview_1](screenshots/just_a_stroll_gameplay_3.jpg)
 
