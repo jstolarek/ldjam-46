@@ -84,9 +84,8 @@ Screenshots
 Credits
 =======
 
-  * Programming: [@killy9999](https://ldjam.com/users/killy9999),
-    [@silnar](https://ldjam.com/users/silnar),
-    [@spacePotato](https://ldjam.com/users/spacePotato)
-  * Graphics: [@spacePotato](https://ldjam.com/users/spacePotato),
-    [@waev](https://ldjam.com/users/waev)
-  * Sound: [@waev](https://ldjam.com/users/waev)
+  * Programming: [@jstolarek](https://github.com/jstolarek),
+    [@silnar](https://github.com/silnar), [@drobnik](https://github.com/drobnik)
+  * Graphics: [@drobnik](https://github.com/drobnik),
+    [@waev](https://github.com/waevka)
+  * Sound: [@waev](https://github.com/waevka)
