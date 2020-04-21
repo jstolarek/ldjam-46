@@ -63,7 +63,7 @@ The following build targets are available:
   * DirectX (Windows): compile with `haxe hl.dx.hxml`
   * JavaScript (any modern web browser): compile with `haxe js.hxml`
 
-To run the SDL or DirectX build use `hl bin/client.hl`.  To run the JavaScript
+To run the SDL or DirectX build use `hl bin/stroll.hl`.  To run the JavaScript
 build open `index.html` in a web browser.
 
 

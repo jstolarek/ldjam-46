@@ -1,5 +1,5 @@
 res/.tmp
 art/export*
 redist.*
-bin/*.*
+bin/
 .haxelib

@@ -1,3 +1,4 @@
 base.hxml
 -D windowSize=1920x1080
--hl bin/stroll.hl
+-hl bin/stroll/main.c
+-lib hlsdl
