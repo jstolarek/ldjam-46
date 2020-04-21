@@ -10,3 +10,4 @@ haxelib git castle castle/
 haxelib git heapsOgmo heapsOgmo/
 
 haxelib install hlsdl
+haxelib install hashlink  # needed for native builds
