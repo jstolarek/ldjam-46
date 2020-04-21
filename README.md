@@ -9,6 +9,8 @@ stones.  Throw them some breadcrumbs to temporarily stop them from following It.
 It has an unlimited number of stones but only three portions of breadcrumbs.
 Walking over rocks will slow It down, so be careful.
 
+![gameplay_preview_1](screenshots/just_a_stroll_gameplay_1.jpg)
+
 
 Controls
 ========
