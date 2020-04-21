@@ -5,8 +5,7 @@ Source code for a Ludum Dare 46 entry.
 
 Theme: *"keep it alive"*.
 
-[Official submission](https://ldjam.com/events/ludum-dare/46/just-a-stroll)
-
+[Official submission](https://ldjam.com/events/ludum-dare/46/just-a-stroll) +
 [itch.io](https://killy9999.itch.io/just-a-stroll) (contains an embedded HTML5
 version as well as a Linux build).
 
