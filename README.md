@@ -67,3 +67,11 @@ The following build targets are available:
 
 To run the SDL or DirectX build use `hl bin/client.hl`.  To run the JavaScript
 build open `index.html` in a web browser.
+
+
+Credits
+=======
+
+  * Programming: @jstolarek, @silnar, @spacePotato
+  * Graphics: @spacePotato, @waev
+  * Sound: @waev
