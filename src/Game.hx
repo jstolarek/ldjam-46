@@ -183,6 +183,7 @@ class Game extends Process {
                   tw.createMs(tf.alpha, 50|0>1, 50);
                   delayer.addF( function() { tw.createMs(tf.alpha, 50|1>0, 50);}, 90 );
                 } else {
+                    Assets.music.sound.dispose();
                     hxd.System.exit();
                 }
             #end
