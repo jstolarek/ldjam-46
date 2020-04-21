@@ -1,12 +1,12 @@
 [submodule "heaps"]
 	path = heaps
-	url = git@github.com:HeapsIO/heaps.git
+	url = https://github.com/HeapsIO/heaps
 [submodule "deepnightLibs"]
 	path = deepnightLibs
-	url = git@github.com:deepnight/deepnightLibs.git
+	url = https://github.com/deepnight/deepnightLibs
 [submodule "castle"]
 	path = castle
-	url = git@github.com:ncannasse/castle.git
+	url = https://github.com/ncannasse/castle
 [submodule "heapsOgmo"]
 	path = heapsOgmo
-	url = git@github.com:deepnight/heapsOgmo.git
+	url = https://github.com/deepnight/heapsOgmo
