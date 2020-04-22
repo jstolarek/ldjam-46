@@ -30,6 +30,11 @@ class Main extends dn.Process {
         hxd.Res.initEmbed();
         #end
 
+        // Deallocate sound when closing the application
+        hxd.Window.getInstance().onClose = function () {
+          Assets.music.sound.dispose(); return true;
+        };
+
         // Hot reloading
         #if debug
         hxd.res.Resource.LIVE_UPDATE = true;
