@@ -95,12 +95,6 @@ or even slightly cropped.  We didn’t have enough time to debug this, but
 everything displays correctly in SDL and DirectX builds if you’re willing to
 build from source.
 
-Native Linux build might segfault on some systems if you close the application
-using Alt+F4 during the game (but not on Intro or Outro screens).  The reason is
-that engine doesn’t correctly de-allocate the sounds.  Quit the game by
-double-pressing Escape to avoid this.  Also, some systems might emit a warning
-from the AL library - this is harmless.
-
 
 Credits
 =======
