@@ -3,3 +3,4 @@ art/export*
 redist.*
 bin/
 .haxelib
+dist/
