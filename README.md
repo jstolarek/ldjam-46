@@ -99,8 +99,9 @@ Known bugs
 We had some problems with properly scaling the HTML5 version of our game.  The
 title and scoring screens might not display correctly - it might not be centred
 or even slightly cropped.  We didn’t have enough time to debug this, but
-everything displays correctly in SDL and DirectX builds if you’re willing to
-build from source.
+everything displays correctly in Linux and Windows versions.  Also, in the HTML5
+version there's an occasional glitch that prevents you from moving in a certain
+direction.
 
 
 Credits

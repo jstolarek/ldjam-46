@@ -10,14 +10,6 @@ Walking over rocks will slow It down, so be careful.
 Ludum Dare 46 entry.
 
 
-Launching
-=========
-
-Run stroll.exe`.  Windows will likely ask you twice (!) whether you want to run
-the application.  The first question is about `stroll.exe`, the second question
-is about the `bin/hl.exe` file that runs the game.
-
-
 Controls
 ========
 
