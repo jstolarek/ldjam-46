@@ -3,8 +3,10 @@
 GAME=stroll
 
 echo -n "Cleaning previous builds..."
-rm -rf dist/$GAME-js dist/$GAME-linux-x86_64
-rm -f dist/$GAME-js.zip dist/$GAME-linux-x86_64.tar.gz dist/$GAME-win64.zip dist/$GAME-win64/bin/hlboot.dat dist/$GAME-win64/$GAME.bat
+# Remove existing distribution archives
+rm -f dist/$GAME-js.zip dist/$GAME-linux-x86_64.tar.gz dist/$GAME-win64.zip
+# Remove existing build artifacts
+rm -rf dist/$GAME-js dist/$GAME-linux-x86_64 dist/$GAME-win64/bin/hlboot.dat
 echo "done"
 
 # Build HTML5
@@ -46,10 +48,7 @@ haxe hl.sdl.hxml > /dev/null
 if [[ -f "bin/$GAME.hl" ]]; then
     mkdir -p dist/$GAME-win64/bin
     cp bin/$GAME.hl dist/$GAME-win64/bin/hlboot.dat
-    cd dist/$GAME-win64
-    echo "cd bin" > $GAME.bat
-    echo "hl.exe hlboot.dat" >> $GAME.bat
-    cd ..
+    cd dist
     zip $GAME-win64.zip $GAME-win64/* $GAME-win64/bin/* > /dev/null
     cd - > /dev/null
     echo "done"

@@ -1,7 +1,21 @@
 Just a Stroll
 =============
 
-Launch the game with `stroll.bat`
+For It this was just a stroll in the park until bloodthirsty pigeons starting
+attacking him.  Now you have to keep It alive!  Kill the pigeons by throwing
+stones.  Throw them some breadcrumbs to temporarily stop them from following It.
+It has an unlimited number of stones but only three portions of breadcrumbs.
+Walking over rocks will slow It down, so be careful.
+
+Ludum Dare 46 entry.
+
+
+Launching
+=========
+
+Run stroll.exe`.  Windows will likely ask you twice (!) whether you want to run
+the application.  The first question is about `stroll.exe`, the second question
+is about the `bin/hl.exe` file that runs the game.
 
 
 Controls

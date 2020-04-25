@@ -57,21 +57,28 @@ and then install the required libraries in a local sandbox with:
 
 ```
 haxelib newrepo
-haxelib git heaps heaps/
-haxelib git deepnightLibs deepnightLibs/
-haxelib git castle castle/
-haxelib git heapsOgmo heapsOgmo/
 
+haxelib install format
+haxelib install hashlink
 haxelib install hlsdl
+
+haxelib dev heaps heaps/
+haxelib dev deepnightLibs deepnightLibs/
+haxelib dev castle castle/
+haxelib dev heapsOgmo heapsOgmo/
 ```
 
 The following build targets are available:
 
   * SDL (Linux, hashlink vm): compile with `haxe hl.sdl.hxml`, run with `hl bin/stroll.hl`
-  * SDL (Linux, native): compile with `./build.sh`, run with `./bin/stroll`
-  * DirectX (Windows, haslink vm): compile with `haxe hl.dx.hxml`, run with `hl bin/stroll.hl`
+  * DirectX (Windows, haslink vm): compile with `haxe hl.dx.hxml`, run with `hl
+    bin/stroll.hl`.  Requires `hldx` library (`haxelib install hldx`).
   * JavaScript (any modern web browser): compile with `haxe js.hxml`, run by
     opening `index.html` in a web browser.
+
+In addition, on Linux you can create distribution archives for Linux, Windows,
+and HTML5 by running `./build_dist.sh`.  This script builds a native version on
+Linux and requires LLVM/clang to do so.
 
 
 Screenshots
