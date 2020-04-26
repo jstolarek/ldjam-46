@@ -103,7 +103,14 @@ class Game extends Process {
         if (!cd.hasSetMs("stone", Const.STONE_COOLDOWN)) {
           stones_thrown++;
           updateScore();
-          new en.Stone(hero.cx, hero.cy, m.x, m.y);
+
+            var xx = hero.centerX;
+            var yy = hero.centerY;
+            var cx = cast(xx / Const.GRID);
+            var cy = cast(yy / Const.GRID);
+            var xr = (xx - (cx * Const.GRID)) / Const.GRID;
+            var yr = (yy - (cy * Const.GRID)) / Const.GRID;
+          new en.Stone(cx, cy, xr, yr, m.x, m.y);
         }
       } else if (ev.button == 1) {
         en.Breadcrumbs.throwBread(hero.cx, hero.cy, m.x, m.y);

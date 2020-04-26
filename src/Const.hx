@@ -26,7 +26,6 @@ class Const {
     public static var SPEED = 0.035;
     public static var FRICT = 0.25;
     public static var STONE_SPEED = 0.8;
-    public static var STONE_FRICT = 0.92;
     public static var BREAD_SPEED = 0.4;
     public static var BREAD_FRICT = 0.8;
     public static var BREAD_LIMIT = 3;

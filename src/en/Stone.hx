@@ -3,15 +3,16 @@ package en;
 class Stone extends Entity {
   static var STONES : Array<Stone> = new Array<Stone>();
 
-  public function new(cx, cy, tx, ty) {
+  public function new(cx:Int, cy:Int, xr:Float, yr:Float, tx:Float, ty:Float) {
     super(cx,cy);
-    frict=Const.STONE_FRICT;
-    yr=0.8;
-    var fx = (cx+0.5)*Const.GRID;
-    var fy = (cy+0.5)*Const.GRID;
-    var norm = M.dist(fx, fy, tx, ty);
-    dx = (tx-fx)/norm * Const.STONE_SPEED;
-    dy = (ty-fy)/norm * Const.STONE_SPEED;
+    this.xr = xr;
+    this.yr = yr;
+    // HACK: Adjust pivot
+    spr.setPivotCoord(3 * 0.5, 3 * 0.5);
+
+    var norm = M.dist(xx, yy, tx, ty);
+    dx = (tx-xx)/norm * Const.STONE_SPEED;
+    dy = (ty-yy)/norm * Const.STONE_SPEED;
 
     spr.anim.registerStateAnim("stone", 1, 0.1, function() return true );
 
