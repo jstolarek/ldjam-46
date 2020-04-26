@@ -1,17 +1,12 @@
 class Const {
     public static var FPS = 60;
     public static var FIXED_FPS = 30;
-    public static var WID = 512;
-    public static var HEI = 288;
-    public static var AUTO_SCALE_TARGET_WID = 512; // -1 to disable auto-scaling on width
-    public static var AUTO_SCALE_TARGET_HEI = 288; // -1 to disable auto-scaling on height
-#if (hl || cpp)
-    public static var SCALE = 3.75; // ignored if auto-scaling
-#elseif (js)
-    public static var SCALE = 2; // ignored if auto-scaling
-#end
-    public static var UI_SCALE = 1.0;
     public static var GRID = 16;
+    public static var LEVEL_WID = 40;
+    public static var LEVEL_HEI = 24;
+    public static var WID = 32 * GRID; // 512;
+    public static var HEI = 18 * GRID; // 288;
+    public static var UI_SCALE = 1.0;
     public static var AIM_RADIUS = 45;
 
     static var _uniq = 0;
