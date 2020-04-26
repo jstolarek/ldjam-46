@@ -70,7 +70,7 @@ class Main extends dn.Process {
         ca = controller.createAccess("main");
 
         // Start
-        new dn.heaps.GameFocusHelper(Boot.ME.s2d, Assets.fontMedium);
+        new GameFocusHelper(Boot.ME.s2d, Assets.fontMedium);
 
         delayer.addF( function() {
             #if !debug
