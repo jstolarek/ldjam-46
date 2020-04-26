@@ -27,7 +27,6 @@ class Const {
     public static var FRICT = 0.25;
     public static var STONE_SPEED = 0.8;
     public static var BREAD_SPEED = 0.4;
-    public static var BREAD_FRICT = 0.8;
     public static var BREAD_LIMIT = 3;
     public static var MAX_STONES = 100;
     public static var MAX_BLOOD = 100;
