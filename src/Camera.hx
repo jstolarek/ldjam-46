@@ -36,11 +36,11 @@ class Camera extends dn.Process {
 
     var shakePower = 1.0;
 
-	public function setPosition(tx,ty) {
-		x = tx;
-		y = ty;
-		target = null;
-	}
+    public function setPosition(tx,ty) {
+        x = tx;
+        y = ty;
+        target = null;
+    }
 
     public function shakeS(t:Float, ?pow=1.0) {
         cd.setS("shaking", t, false);

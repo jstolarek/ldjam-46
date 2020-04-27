@@ -25,9 +25,9 @@ class Hud extends dn.Process {
             breads[i].y = 3;
         }
 
-		tf = new h2d.Text(Assets.fontSmall,root);
-		tf.x = 5;
-		tf.y = 20;
+        tf = new h2d.Text(Assets.fontSmall,root);
+        tf.x = 5;
+        tf.y = 20;
     }
 
     override function onDispose() {
@@ -35,19 +35,19 @@ class Hud extends dn.Process {
     }
 
     override function update() {
-      var life = Std.int(Math.ceil((100 - Game.ME.hero.health) * 72 / 100));
-      var empty_bar = new h2d.Bitmap(h2d.Tile.fromColor(0x49475B, life, 6), root);
-      empty_bar.x = 7+72-life;
-      empty_bar.y = 8;
+        var life = Std.int(Math.ceil((100 - Game.ME.hero.health) * 72 / 100));
+        var empty_bar = new h2d.Bitmap(h2d.Tile.fromColor(0x49475B, life, 6), root);
+        empty_bar.x = 7+72-life;
+        empty_bar.y = 8;
 
-      for (i in en.Breadcrumbs.limit...Const.BREAD_LIMIT) {
-        breads[i].visible = false;
-      }
+        for (i in en.Breadcrumbs.limit...Const.BREAD_LIMIT) {
+            breads[i].visible = false;
+        }
 
-#if (!debug)
-      tf.text = "Score: " + Game.ME.score;
-#else
-      tf.text = "Score: " + Game.ME.score+ "\nFPS: " + Std.string(pretty(hxd.Timer.fps()));
-#end
+        #if (!debug)
+        tf.text = "Score: " + Game.ME.score;
+        #else
+        tf.text = "Score: " + Game.ME.score+ "\nFPS: " + Std.string(pretty(hxd.Timer.fps()));
+        #end
     }
 }

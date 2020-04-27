@@ -9,8 +9,8 @@ class Game extends Process {
     public var scroller : h2d.Layers;
     public var level : Level;
     public var hud : ui.Hud;
-	var camFocuses : Map<String,CPoint> = new Map();
-	public var hero : en.Hero;
+    var camFocuses : Map<String,CPoint> = new Map();
+    public var hero : en.Hero;
     public var spawner : en.Spawner;
     var stones_thrown : Int;
     var kills : Int;
@@ -40,7 +40,7 @@ class Game extends Process {
         Assets.music.play(true, 0.5);
         #end
 
-		var oe = level.getEntities("hero")[0];
+        var oe = level.getEntities("hero")[0];
         hero = new en.Hero(oe.cx, oe.cy);
         en.Breadcrumbs.limit = Const.BREAD_LIMIT;
         #if (slingshot)
@@ -58,10 +58,10 @@ class Game extends Process {
         #if (slingshot)
         slingshot.setPosCase(oe.cx, oe.cy);
         #end
-		for(oe in level.getEntities("camFocus")) {
-			camFocuses.set(oe.getStr("id"), new CPoint(oe.cx,oe.cy));
+        for(oe in level.getEntities("camFocus")) {
+            camFocuses.set(oe.getStr("id"), new CPoint(oe.cx,oe.cy));
         }
-		setCameraFocus("main");
+        setCameraFocus("main");
 
         mouse = {x : w() * 0.5, y : h() * 0.5};
         mouseTrap = new h2d.Interactive(w(),h(),Main.ME.root);
@@ -72,16 +72,16 @@ class Game extends Process {
         mouseTrap.onClick = onMouseClick;
     }
 
-	override public function onResize() {
+    override public function onResize() {
         super.onResize();
-		mouseTrap.width = w();
-		mouseTrap.height = h();
-	}
+        mouseTrap.width = w();
+        mouseTrap.height = h();
+    }
 
     function updateScore() {
-      if ( stones_thrown != 0 ) {
-        score = Std.int(raw_score * kills/stones_thrown);
-      }
+        if ( stones_thrown != 0 ) {
+            score = Std.int(raw_score * kills/stones_thrown);
+        }
     }
 
     public function addScore() {
@@ -90,52 +90,51 @@ class Game extends Process {
       updateScore();
     }
 
-	function onMouseMove(ev:hxd.Event) {
-
-		var m = getMouse(ev);
+    function onMouseMove(ev:hxd.Event) {
+        var m = getMouse(ev);
         mouse.x = m.x;
         mouse.y = m.y;
-	}
-
-    function onMouseClick(ev:hxd.Event) {
-      var m = getMouse(ev);
-      if (ev.button == 0) {
-        if (!cd.hasSetMs("stone", Const.STONE_COOLDOWN)) {
-          stones_thrown++;
-          updateScore();
-
-            var xx = hero.centerX;
-            var yy = hero.centerY;
-            var cx = cast(xx / Const.GRID);
-            var cy = cast(yy / Const.GRID);
-            var xr = (xx - (cx * Const.GRID)) / Const.GRID;
-            var yr = (yy - (cy * Const.GRID)) / Const.GRID;
-          new en.Stone(cx, cy, xr, yr, m.x, m.y);
-        }
-      } else if (ev.button == 1) {
-            var xx = hero.centerX;
-            var yy = hero.centerY;
-            var cx = cast(xx / Const.GRID);
-            var cy = cast(yy / Const.GRID);
-            var xr = (xx - (cx * Const.GRID)) / Const.GRID;
-            var yr = (yy - (cy * Const.GRID)) / Const.GRID;
-        en.Breadcrumbs.throwBread(cx, cy, xr, yr, m.x, m.y);
-      }
     }
 
-	function setCameraFocus(id:String) {
-		var pt = camFocuses.get(id);
-		if( pt==null ) {
-			if( id=="main" ) {
-				camera.target = hero;
-			} else
-				setCameraFocus("main");
-		}
-		else {
-			camera.setPosition(pt.footX, pt.footY);
-		}
+    function onMouseClick(ev:hxd.Event) {
+        var m = getMouse(ev);
+        if (ev.button == 0) {
+            if (!cd.hasSetMs("stone", Const.STONE_COOLDOWN)) {
+                stones_thrown++;
+                updateScore();
 
-	}
+                var xx = hero.centerX;
+                var yy = hero.centerY;
+                var cx = cast(xx / Const.GRID);
+                var cy = cast(yy / Const.GRID);
+                var xr = (xx - (cx * Const.GRID)) / Const.GRID;
+                var yr = (yy - (cy * Const.GRID)) / Const.GRID;
+                new en.Stone(cx, cy, xr, yr, m.x, m.y);
+            }
+        } else if (ev.button == 1) {
+            var xx = hero.centerX;
+            var yy = hero.centerY;
+            var cx = cast(xx / Const.GRID);
+            var cy = cast(yy / Const.GRID);
+            var xr = (xx - (cx * Const.GRID)) / Const.GRID;
+            var yr = (yy - (cy * Const.GRID)) / Const.GRID;
+            en.Breadcrumbs.throwBread(cx, cy, xr, yr, m.x, m.y);
+        }
+    }
+
+    function setCameraFocus(id:String) {
+        var pt = camFocuses.get(id);
+        if( pt==null ) {
+            if( id=="main" ) {
+                camera.target = hero;
+            } else
+                setCameraFocus("main");
+        }
+        else {
+            camera.setPosition(pt.footX, pt.footY);
+        }
+
+    }
 
 
     public function onCdbReload() {
@@ -189,12 +188,12 @@ class Game extends Process {
             // Exit
             if( ca.isKeyboardPressed(Key.ESCAPE) )
                 if( !cd.hasSetS("exitWarn",1.5) ) {
-                  var tf = new h2d.Text(Assets.fontTiny, root);
-                  tf.text = "Press ESCAPE again to quit";
-                  tf.x = Const.WID*0.475 - tf.textWidth*tf.scaleX*0.5;
-                  tf.y = Const.HEI*0.4;
-                  tw.createMs(tf.alpha, 50|0>1, 50);
-                  delayer.addF( function() { tw.createMs(tf.alpha, 50|1>0, 50);}, 90 );
+                    var tf = new h2d.Text(Assets.fontTiny, root);
+                    tf.text = "Press ESCAPE again to quit";
+                    tf.x = Const.WID*0.475 - tf.textWidth*tf.scaleX*0.5;
+                    tf.y = Const.HEI*0.4;
+                    tw.createMs(tf.alpha, 50|0>1, 50);
+                    delayer.addF( function() { tw.createMs(tf.alpha, 50|1>0, 50);}, 90 );
                 } else {
                     Assets.music.sound.dispose();
                     hxd.System.exit();
