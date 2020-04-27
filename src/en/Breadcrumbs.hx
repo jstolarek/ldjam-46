@@ -25,6 +25,8 @@ class Breadcrumbs extends Entity {
     Game.ME.scroller.removeChild(spr);
     Game.ME.scroller.add(spr, Const.DP_FX_BG);
 
+    frict = Const.BREAD_FRICT;
+
     var norm = M.dist(xx, yy, tx, ty);
     dx = (tx-xx)/norm * Const.BREAD_SPEED;
     dy = (ty-yy)/norm * Const.BREAD_SPEED;
