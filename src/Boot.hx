@@ -9,6 +9,9 @@ class Boot extends hxd.App {
     // Engine ready
     override function init() {
         ME = this;
+        s2d.scaleMode = LetterBox(Const.WID, Const.HEI, false, Center, Center);
+        dn.Process.CUSTOM_STAGE_WIDTH = Const.WID;
+        dn.Process.CUSTOM_STAGE_HEIGHT = Const.HEI;
         new Main(s2d);
         onResize();
     }

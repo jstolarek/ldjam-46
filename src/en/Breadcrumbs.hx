@@ -4,9 +4,9 @@ class Breadcrumbs extends Entity {
   public static var ME : Null<Breadcrumbs> = null;
   public static var limit = Const.BREAD_LIMIT;
 
-  static public function throwBread(cx, cy, tx, ty) {
+  static public function throwBread(cx, cy, xr, yr, tx, ty) {
     if ( ME == null && limit > 0 ) {
-      ME = new Breadcrumbs(cx,cy, tx, ty);
+      ME = new Breadcrumbs(cx,cy, xr, yr, tx, ty);
       limit--;
       Game.ME.delayer.addS( function() {
         ME.destroy();
@@ -15,19 +15,21 @@ class Breadcrumbs extends Entity {
     }
   }
 
-  function new(cx, cy, tx, ty) {
+  function new(cx, cy, xr, yr, tx, ty) {
     super(cx,cy);
+    this.xr = xr;
+    this.yr = yr;
+    // HACK: Adjust pivot
+    spr.setPivotCoord(32 * 0.5, 32 * 0.5);
 
     Game.ME.scroller.removeChild(spr);
     Game.ME.scroller.add(spr, Const.DP_FX_BG);
 
-    frict=Const.BREAD_FRICT;
-    yr=0.8;
-    var fx = (cx+0.5)*Const.GRID;
-    var fy = (cy+0.5)*Const.GRID;
-    var norm = M.dist(fx, fy, tx, ty);
-    dx = (tx-fx)/norm * Const.BREAD_SPEED;
-    dy = (ty-fy)/norm * Const.BREAD_SPEED;
+    frict = Const.BREAD_FRICT;
+
+    var norm = M.dist(xx, yy, tx, ty);
+    dx = (tx-xx)/norm * Const.BREAD_SPEED;
+    dy = (ty-yy)/norm * Const.BREAD_SPEED;
 
     spr.anim.playAndLoop("bread-flying");
   }

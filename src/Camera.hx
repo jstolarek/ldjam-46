@@ -17,11 +17,11 @@ class Camera extends dn.Process {
     }
 
     function get_wid() {
-        return M.ceil( Game.ME.w() / Const.SCALE );
+        return M.ceil( Game.ME.w() );
     }
 
     function get_hei() {
-        return M.ceil( Game.ME.h() / Const.SCALE );
+        return M.ceil( Game.ME.h() );
     }
 
     public function recenter() {
@@ -31,8 +31,8 @@ class Camera extends dn.Process {
         }
     }
 
-    public inline function scrollerToGlobalX(v:Float) return v*Const.SCALE + Game.ME.scroller.x;
-    public inline function scrollerToGlobalY(v:Float) return v*Const.SCALE + Game.ME.scroller.y;
+    public inline function scrollerToGlobalX(v:Float) return v + Game.ME.scroller.x;
+    public inline function scrollerToGlobalY(v:Float) return v + Game.ME.scroller.y;
 
     var shakePower = 1.0;
 

@@ -70,7 +70,7 @@ class Main extends dn.Process {
         ca = controller.createAccess("main");
 
         // Start
-        new dn.heaps.GameFocusHelper(Boot.ME.s2d, Assets.fontMedium);
+        new GameFocusHelper(Boot.ME.s2d, Assets.fontMedium);
 
         delayer.addF( function() {
             #if !debug
@@ -98,17 +98,6 @@ class Main extends dn.Process {
             tw.createMs(mask.alpha, 0, 1000).end( mask.remove );
             },100);
         });
-    }
-
-    override public function onResize() {
-        super.onResize();
-
-        // Auto scaling
-        if( Const.AUTO_SCALE_TARGET_WID>0 )
-            Const.SCALE = M.ceil( w()/Const.AUTO_SCALE_TARGET_WID );
-        else if( Const.AUTO_SCALE_TARGET_HEI>0 )
-            Const.SCALE = M.ceil( h()/Const.AUTO_SCALE_TARGET_HEI );
-        root.setScale(Const.SCALE);
     }
 
     override function update() {

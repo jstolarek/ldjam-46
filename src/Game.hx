@@ -19,7 +19,7 @@ class Game extends Process {
     public var slingshot : en.Slingshot;
     #end
     var mouseTrap : h2d.Interactive;
-    public var mouse : { x:Int, y:Int }
+    public var mouse : { x:Float, y:Float }
     public var score : Int;
 
     public function new() {
@@ -63,14 +63,13 @@ class Game extends Process {
         }
 		setCameraFocus("main");
 
+        mouse = {x : w() * 0.5, y : h() * 0.5};
         mouseTrap = new h2d.Interactive(w(),h(),Main.ME.root);
-        mouseTrap.onMove  = onMouseMove;
-        mouseTrap.onClick = onMouseClick;
         mouseTrap.enableRightButton = true;
         mouseTrap.propagateEvents = true;
-        var m = getMouse();
-        mouse = {x : m.x, y : m.y};
-        mouseTrap.cursor = Custom(new hxd.Cursor.CustomCursor([Assets.cursorBitmap],10,0,0));
+        mouseTrap.cursor = Custom(new hxd.Cursor.CustomCursor([Assets.cursorBitmap],10,16,16));
+        mouseTrap.onMove  = onMouseMove;
+        mouseTrap.onClick = onMouseClick;
     }
 
 	override public function onResize() {
@@ -92,21 +91,35 @@ class Game extends Process {
     }
 
 	function onMouseMove(ev:hxd.Event) {
-		var m = getMouse();
+
+		var m = getMouse(ev);
         mouse.x = m.x;
         mouse.y = m.y;
 	}
 
     function onMouseClick(ev:hxd.Event) {
-      var m = getMouse();
+      var m = getMouse(ev);
       if (ev.button == 0) {
         if (!cd.hasSetMs("stone", Const.STONE_COOLDOWN)) {
           stones_thrown++;
           updateScore();
-          new en.Stone(hero.cx, hero.cy, mouse.x, mouse.y);
+
+            var xx = hero.centerX;
+            var yy = hero.centerY;
+            var cx = cast(xx / Const.GRID);
+            var cy = cast(yy / Const.GRID);
+            var xr = (xx - (cx * Const.GRID)) / Const.GRID;
+            var yr = (yy - (cy * Const.GRID)) / Const.GRID;
+          new en.Stone(cx, cy, xr, yr, m.x, m.y);
         }
       } else if (ev.button == 1) {
-        en.Breadcrumbs.throwBread(hero.cx, hero.cy, mouse.x, mouse.y);
+            var xx = hero.centerX;
+            var yy = hero.centerY;
+            var cx = cast(xx / Const.GRID);
+            var cy = cast(yy / Const.GRID);
+            var xr = (xx - (cx * Const.GRID)) / Const.GRID;
+            var yr = (yy - (cy * Const.GRID)) / Const.GRID;
+        en.Breadcrumbs.throwBread(cx, cy, xr, yr, m.x, m.y);
       }
     }
 
@@ -190,16 +203,14 @@ class Game extends Process {
         }
     }
 
-	public function getMouse() {
-		var gx = hxd.Window.getInstance().mouseX;
-		var gy = hxd.Window.getInstance().mouseY;
-		var x = Std.int( gx/Const.SCALE-scroller.x );
-		var y = Std.int( gy/Const.SCALE-scroller.y );
-		return {
-			x : x,
-			y : y,
-			cx : Std.int(x/Const.GRID),
-			cy : Std.int(y/Const.GRID),
-		}
-	}
+    inline function getMouse(ev:hxd.Event) {
+        var x = ev.relX - scroller.x;
+        var y = ev.relY - scroller.y;
+        return {
+            x : x,
+            y : y,
+            cx : Std.int(x/Const.GRID),
+            cy : Std.int(y/Const.GRID),
+        }
+    }
 }

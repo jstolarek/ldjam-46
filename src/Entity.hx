@@ -38,6 +38,9 @@ class Entity {
     public var colorAdd : h3d.Vector;
     var debugLabel : Null<h2d.Text>;
 
+    public var xx(get,never) : Float; inline function get_xx() return (cx+xr)*Const.GRID;
+    public var yy(get,never) : Float; inline function get_yy() return (cy+yr)*Const.GRID;
+
     public var footX(get,never) : Float; inline function get_footX() return (cx+xr)*Const.GRID;
     public var footY(get,never) : Float; inline function get_footY() return (cy+yr)*Const.GRID;
     public var headX(get,never) : Float; inline function get_headX() return footX;

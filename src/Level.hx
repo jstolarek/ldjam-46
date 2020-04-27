@@ -19,13 +19,12 @@ abstract Collision(Int) {
 class Level extends dn.Process {
     public var game(get,never) : Game; inline function get_game() return Game.ME;
 
-    public var wid(get,never) : Int; inline function get_wid() return 40;
-    public var hei(get,never) : Int; inline function get_hei() return 24;
+    public var wid(get,never) : Int; inline function get_wid() return Const.LEVEL_WID;
+    public var hei(get,never) : Int; inline function get_hei() return Const.LEVEL_HEI;
 
 	var project : ogmo.Project;
 	var data : ogmo.Level;
 
-    var invalidated = true;
     var collMap : Map<Int,Collision> = new Map();
 
     public function new() {
@@ -42,6 +41,17 @@ class Level extends dn.Process {
           for(cx in 0...l.cWid)
             if( l.getIntGrid(cx,cy)>0 )
               setCollision(cx,cy,new Collision(l.getIntGrid(cx,cy)));
+
+        // Render
+        for (l in data.layersReversed) {
+            switch l.name {
+                case "collisions","entities": // nope
+                case "front":
+                    var e = l.render(root);
+                    e.filter = new h2d.filter.Glow(0x0, 0.4, 32, 2, 2, true);
+                    case _: l.render(root);
+                }
+        }
     }
 
     public inline function isValid(cx,cy) return cx>=0 && cx<wid && cy>=0 && cy<hei;
@@ -64,27 +74,8 @@ class Level extends dn.Process {
       return isValid(cx,cy) ? collMap.get(coordId(cx,cy))==ROCKS : true;
     }
 
-    public function render() {
-     for(l in data.layersReversed)
-       switch l.name {
-            case "collisions","entities": // nope
-            case "front":
-              var e = l.render(root);
-              e.filter = new h2d.filter.Glow(0x0, 0.4, 32, 2, 2, true);
-              case _: l.render(root);
-         }
-    }
-
 	public inline function getEntities(id:String) {
 		return data.getLayerByName("entities").getEntities(id);
 	}
-
-    override function postUpdate() {
-        super.postUpdate();
-
-        if( invalidated ) {
-            invalidated = false;
-            render();
-        }
-    }
 }
+
