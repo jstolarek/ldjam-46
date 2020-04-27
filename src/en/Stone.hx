@@ -10,6 +10,8 @@ class Stone extends Entity {
     // HACK: Adjust pivot
     spr.setPivotCoord(3 * 0.5, 3 * 0.5);
 
+    frict = Const.STONE_FRICT;
+
     var norm = M.dist(xx, yy, tx, ty);
     dx = (tx-xx)/norm * Const.STONE_SPEED;
     dy = (ty-yy)/norm * Const.STONE_SPEED;
