@@ -15,7 +15,7 @@ class Intro extends dn.Process {
 
 		var logo = Assets.tiles.h_get("title", 0.5,0.5, root);
         logo.anim.play("title", 9999);
-		logo.setPosition(wid*0.475, hei*0.3);
+		logo.setPosition(wid*0.5, hei*0.25);
 		tw.createMs(logo.alpha, 0>1, 1500);
 
         var inst = new h2d.Text(Assets.fontTiny, root);
@@ -28,14 +28,14 @@ class Intro extends dn.Process {
                      ,"QUIT: press Escape  twice"
                      #end
                      ].join("\n");
-        inst.x = wid*0.5 - inst.textWidth*0.05;
+        inst.x = wid*0.5;
         inst.y = hei*0.5;
         inst.textAlign = Center;
         tw.createMs(inst.alpha, 500|0>1, 1000);
 
 		var tf = new h2d.Text(Assets.fontTiny, root);
 		tf.text = "Click anywhere  to START";
-		tf.x = wid*0.475;
+		tf.x = wid*0.5;
 		tf.y = hei*0.85;
         tf.textAlign = Center;
 
