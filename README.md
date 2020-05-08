@@ -7,7 +7,7 @@ Theme: *keep it alive*.
 
 [Official submission](https://ldjam.com/events/ludum-dare/46/just-a-stroll) +
 [itch.io](https://killy9999.itch.io/just-a-stroll) (contains an embedded HTML5
-version as well as a Linux build).
+version as well as Windows and Linux builds).
 
 ![gameplay_preview_1](screenshots/just_a_stroll_gameplay_2.jpg)
 
