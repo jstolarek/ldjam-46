@@ -84,13 +84,13 @@ Linux and requires LLVM/clang to do so.
 Screenshots
 ===========
 
-![gameplay_preview_1](screenshots/just_a_stroll_title.jpg)
+![gameplay_preview_1](screenshots/just_a_stroll_title_screen.jpg)
 
 ![gameplay_preview_1](screenshots/just_a_stroll_gameplay_1.jpg)
 
-![gameplay_preview_1](screenshots/just_a_stroll_gameplay_3.jpg)
+![gameplay_preview_2](screenshots/just_a_stroll_gameplay_3.jpg)
 
-![gameplay_preview_1](screenshots/just_a_stroll_gameplay_4.jpg)
+![gameplay_preview_3](screenshots/just_a_stroll_gameplay_4.jpg)
 
 
 Known bugs
